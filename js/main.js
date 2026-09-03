@@ -35,7 +35,7 @@ document.querySelectorAll('.problem-icon, .service-icon, .menu-service-icon').fo
   }
 });
 
-// Scroll reveal: subtle, quick and only runs once per element.
+// Scroll reveal: set the animation state before observing, then reveal only when the user reaches the section.
 const problemSection = document.querySelector('.problem-section');
 if (problemSection) {
   const heading = problemSection.querySelector('.section-heading');
@@ -43,11 +43,20 @@ if (problemSection) {
 
   problemSection.querySelectorAll('.problem-card').forEach((card, index) => {
     card.classList.add(index % 2 === 0 ? 'reveal-left' : 'reveal-right');
-    card.style.setProperty('--reveal-delay', `${Math.min(index * 90, 360)}ms`);
+    card.style.setProperty('--reveal-delay', `${index * 120}ms`);
   });
 }
 
 const revealTargets = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+
+function revealVisibleElements() {
+  revealTargets.forEach((element) => {
+    const rect = element.getBoundingClientRect();
+    const visible = rect.top < window.innerHeight * 0.9 && rect.bottom > window.innerHeight * 0.08;
+    if (visible) element.classList.add('is-visible');
+  });
+}
+
 if ('IntersectionObserver' in window && revealTargets.length) {
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry) => {
@@ -55,9 +64,13 @@ if ('IntersectionObserver' in window && revealTargets.length) {
       entry.target.classList.add('is-visible');
       obs.unobserve(entry.target);
     });
-  }, { threshold: 0.14, rootMargin: '0px 0px -7% 0px' });
+  }, { threshold: 0.01, rootMargin: '0px 0px -5% 0px' });
 
-  revealTargets.forEach((element) => observer.observe(element));
+  // Wait one frame so the hidden starting state is painted before the observer can reveal anything.
+  requestAnimationFrame(() => revealTargets.forEach((element) => observer.observe(element)));
 } else {
   revealTargets.forEach((element) => element.classList.add('is-visible'));
 }
+
+// Safety fallback for browsers where IntersectionObserver behaves inconsistently.
+window.addEventListener('load', revealVisibleElements, { once: true });
