@@ -4,8 +4,10 @@
    working structure or scroll-reveal implementation.
    ========================================================= */
 
-.hero { position: relative; isolation: isolate; background: radial-gradient(circle at 82% 24%, rgba(232,137,45,.22), transparent 30%), radial-gradient(circle at 18% 90%, rgba(72,116,156,.18), transparent 32%), linear-gradient(135deg, #101c2a 0%, #1b2d40 58%, #243b50 100%); }
-.hero:after { content: ""; position: absolute; inset: auto -10% -110px auto; width: 430px; height: 260px; border-radius: 50%; background: rgba(232,137,45,.08); filter: blur(2px); z-index: -1; }
+.hero { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(circle at 82% 24%, rgba(232,137,45,.16), transparent 26%), radial-gradient(circle at 16% 88%, rgba(72,116,156,.12), transparent 30%), #101923; }
+.hero:before { content: ""; position: absolute; z-index: 0; pointer-events: none; width: 150%; height: 72%; left: -24%; bottom: -28%; border-top: 10px solid rgba(255,255,255,.88); border-radius: 50%; transform: rotate(-6deg); box-shadow: 0 -1px 0 rgba(255,255,255,.18), 0 -12px 28px rgba(255,255,255,.035); }
+.hero:after { content: ""; position: absolute; z-index: 0; pointer-events: none; inset: auto -12% -120px auto; width: 470px; height: 290px; border-radius: 50%; background: rgba(232,137,45,.075); filter: blur(3px); }
+.hero > * { position: relative; z-index: 1; }
 .hero-copy { max-width: 680px; }
 .hero .eyebrow { display: inline-flex; align-items: center; gap: 9px; padding: 8px 11px; margin-bottom: 18px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; background: rgba(255,255,255,.06); color: #f6bc7d; letter-spacing: .11em; }
 .hero .eyebrow:before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px rgba(232,137,45,.12); }
@@ -145,6 +147,7 @@
 
 @media (max-width: 699px) {
   .hero { grid-template-columns: 1fr; gap: 22px; min-height: auto; padding: 42px 16px 64px; }
+  .hero:before { width: 185%; height: 48%; left: -45%; bottom: -18%; border-top-width: 7px; transform: rotate(-7deg); }
   .hero h1 { font-size: clamp(42px, 13vw, 62px); line-height: .92; }
   .hero .eyebrow { font-size: 10px; }
   .hero-subtitle { margin-top: 18px; font-size: 11px; }
