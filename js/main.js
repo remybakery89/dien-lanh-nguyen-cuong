@@ -1,6 +1,6 @@
 const redesignStylesheet = document.createElement('link');
 redesignStylesheet.rel = 'stylesheet';
-redesignStylesheet.href = 'css/homepage-redesign-v1.css?v=3';
+redesignStylesheet.href = 'css/homepage-redesign-v1.css?v=4';
 document.head.appendChild(redesignStylesheet);
 
 const menu = document.querySelector('#main-menu');
@@ -25,6 +25,7 @@ document.addEventListener('keydown', (event) => {
 
 const hero = document.querySelector('.hero');
 if (hero) {
+  hero.classList.add('reference-hero');
   hero.style.background = '#0d1723';
   hero.style.overflow = 'hidden';
   hero.style.isolation = 'isolate';
@@ -46,31 +47,53 @@ document.querySelectorAll('.problem-icon, .service-icon, .menu-service-icon').fo
   }
 });
 
+const heroSubtitle = document.querySelector('.hero-subtitle');
+if (heroSubtitle) {
+  heroSubtitle.textContent = 'Chuyên sửa chữa, bảo trì, lắp đặt các thiết bị điện lạnh\nTận tâm – Chất lượng – Giá cả hợp lý';
+  heroSubtitle.style.textAlign = 'left';
+}
+
+const heroHeading = hero ? hero.querySelector('h1') : null;
+if (heroHeading) {
+  heroHeading.innerHTML = 'Sửa chữa điện lạnh <span>Nhanh chóng – Uy tín</span>';
+}
+
+const heroActions = hero ? hero.querySelector('.hero-actions') : null;
+if (heroActions) {
+  const primary = heroActions.querySelector('.btn-primary');
+  const secondary = heroActions.querySelector('.btn-secondary');
+  if (primary) primary.innerHTML = '☎ <span>GỌI NGAY</span>';
+  if (secondary) secondary.innerHTML = '<span class="zalo-mark">Zalo</span><span>CHAT ZALO</span>';
+}
+
+const heroVisual = hero ? hero.querySelector('.hero-visual') : null;
+if (heroVisual) {
+  heroVisual.querySelectorAll('.visual-glow, .service-orbit').forEach((element) => element.remove());
+  const caption = heroVisual.querySelector('.technician-art > div:last-child');
+  if (caption) caption.remove();
+}
+
 const heroTrust = document.querySelector('.hero-trust');
 if (heroTrust && hero) {
   hero.insertAdjacentElement('afterend', heroTrust);
 }
-
-const heroSubtitle = document.querySelector('.hero-subtitle');
-if (heroSubtitle) heroSubtitle.style.textAlign = 'left';
 
 if (heroTrust) {
   const trustItems = [...heroTrust.querySelectorAll(':scope > span')];
   if (trustItems[1]) trustItems[1].remove();
 
   const trustIcons = [
-    '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8a16 16 0 1 1-11.3 4.7"/><path d="M24 16v8l6 4"/><path d="M8 17h9V8"/></svg>',
-    '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M9 14h30v25H9z"/><path d="M14 14V8h20v6M16 23h16M16 30h10"/><circle cx="34" cy="31" r="3"/></svg>',
-    '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5 40 11v10c0 10-6.4 17.2-16 22-9.6-4.8-16-12-16-22V11l16-6Z"/><path d="m15 24 6 6 12-13"/></svg>',
-    '<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18"/><path d="M16.5 28c2.4 4 4.9 6 7.5 6s5.1-2 7.5-6"/><path d="M17 19h.01M31 19h.01"/></svg>'
+    '<svg viewBox="0 0 80 80" aria-hidden="true"><path d="M40 13a27 27 0 1 1-19.1 7.9"/><path d="M40 24v16l12 7"/><path d="M14 28h17V11"/><path d="M8 35h12M11 25h11"/></svg>',
+    '<svg viewBox="0 0 80 80" aria-hidden="true"><path d="M17 18h46v47H17z"/><path d="M27 18V10h26v8M27 32h26M27 43h20M27 54h14"/><circle cx="57" cy="55" r="10"/><path d="M53 55h8M57 51v8"/></svg>',
+    '<svg viewBox="0 0 80 80" aria-hidden="true"><path d="M40 7 67 17v18c0 18-11 30-27 38C24 65 13 53 13 35V17L40 7Z"/><path d="m25 39 9 9 21-23"/></svg>',
+    '<svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="28"/><circle cx="30" cy="34" r="2.8"/><circle cx="50" cy="34" r="2.8"/><path d="M27 47c4.1 6 8.5 9 13 9s8.9-3 13-9"/></svg>'
   ];
-  const trustLabels = ['Có mặt<br>nhanh chóng','Giá cả<br>minh bạch','Bảo hành<br>dịch vụ','Khách hàng<br>hài lòng'];
+  const trustLabels = ['Có mặt<br>Nh nhanh chóng'.replace('Nh nhanh','Nhanh'), 'Giá cả<br>Minh bạch', 'Bảo hành<br>dịch vụ', 'Khách hàng<br>Hài lòng'];
+
   heroTrust.style.display = 'grid';
   heroTrust.style.gridTemplateColumns = 'repeat(4, minmax(0, 1fr))';
   heroTrust.style.gap = '0';
   heroTrust.style.marginTop = '0';
-  heroTrust.style.alignItems = 'start';
-  heroTrust.style.overflow = 'visible';
   heroTrust.style.width = '100%';
   heroTrust.style.maxWidth = 'none';
 
@@ -81,45 +104,24 @@ if (heroTrust) {
       icon.innerHTML = trustIcons[index];
       icon.style.display = 'grid';
       icon.style.placeItems = 'center';
-      icon.style.width = '48px';
-      icon.style.height = '48px';
-      icon.style.margin = '0 auto 10px';
-      icon.style.color = '#247a46';
+      icon.style.color = '#176b3b';
     }
     if (label) {
       label.innerHTML = trustLabels[index];
       label.style.display = 'block';
-      label.style.fontSize = '14px';
-      label.style.fontWeight = '700';
-      label.style.lineHeight = '1.35';
-      label.style.whiteSpace = 'normal';
       label.style.textAlign = 'center';
-      label.style.color = '#17202a';
+      label.style.color = '#111';
     }
     item.style.display = 'grid';
     item.style.justifyItems = 'center';
     item.style.alignContent = 'start';
-    item.style.minHeight = '0';
     item.style.padding = '0 18px';
     item.style.border = '0';
     item.style.borderRadius = '0';
     item.style.background = 'transparent';
-    item.style.color = 'inherit';
     item.style.boxShadow = 'none';
     item.style.position = 'relative';
   });
-
-  const mobileTrustLayout = () => {
-    const mobile = window.matchMedia('(max-width: 699px)').matches;
-    heroTrust.style.gridTemplateColumns = 'repeat(4, minmax(0, 1fr))';
-    heroTrust.style.paddingBottom = '0';
-    heroTrust.querySelectorAll(':scope > span').forEach((item) => {
-      item.style.paddingLeft = mobile ? '4px' : '18px';
-      item.style.paddingRight = mobile ? '4px' : '18px';
-    });
-  };
-  mobileTrustLayout();
-  window.addEventListener('resize', mobileTrustLayout);
 }
 
 const servicesGrid = document.querySelector('.services-grid');
