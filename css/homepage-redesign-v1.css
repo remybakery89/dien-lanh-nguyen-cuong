@@ -61,7 +61,7 @@
 .arrow { position: relative; z-index: 2; transition: transform .2s ease; }
 .service-card:hover .arrow { transform: rotate(8deg) scale(1.06); }
 
-/* Service cards: make each one read like a compact equipment tile */
+/* Service cards: compact equipment tiles */
 .service-card { display: flex; flex-direction: column; justify-content: space-between; isolation: isolate; }
 .service-card:before { content: ""; position: absolute; z-index: -1; width: 210px; height: 210px; top: 42px; right: -66px; border-radius: 50%; background: rgba(23,37,54,.045); box-shadow: inset 0 0 0 1px rgba(23,37,54,.035); }
 .service-card-featured:before { background: rgba(255,255,255,.055); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
@@ -120,13 +120,16 @@
 }
 
 @media (max-width: 699px) {
+  /* Mobile: one column for every content grid. */
   .hero-trust { grid-template-columns: 1fr 1fr; gap: 7px; }
   .hero-trust span:last-child { grid-column: 1 / -1; }
   .hero .eyebrow { font-size: 10px; }
   .problem-section, .services-section { padding-top: 64px; }
+  .problem-grid, .services-grid, .trust-grid, .process-grid { grid-template-columns: 1fr; }
+  .problem-grid, .services-grid, .trust-grid, .process-grid { gap: 12px; }
   .problem-card:after { width: 30px; height: 30px; right: 14px; top: 14px; }
-  .service-card { min-height: 205px; padding: 16px; }
-  .service-card h3 { font-size: 17px; }
+  .service-card { width: 100%; min-height: 0; aspect-ratio: auto; height: 190px; padding: 17px; }
+  .service-card h3 { font-size: 18px; }
   .service-icon { width: 54px; height: 54px; border-radius: 17px; font-size: 25px; }
   .service-card .arrow { width: 34px; height: 34px; font-size: 16px; }
   .service-card:before { width: 160px; height: 160px; top: 54px; right: -55px; }
