@@ -1,27 +1,420 @@
-/* Approved reference polish — keep the rest of the stylesheet unchanged. */
-.reference-hero { background:radial-gradient(circle at 72% 80%,rgba(242,139,32,.15),transparent 22%),radial-gradient(circle at 52% 0%,rgba(50,77,110,.28),transparent 38%),#0d1723 !important; }
-.reference-hero h1 { font-family:"Arial Narrow","Roboto Condensed",Inter,system-ui,sans-serif !important; font-weight:900 !important; }
-.reference-hero h1 span { font-family:"Arial Narrow","Roboto Condensed",Inter,system-ui,sans-serif !important; font-weight:900 !important; }
-.reference-hero .hero-subtitle { font-family:Inter,system-ui,sans-serif !important; }
-.reference-hero::before { width:86% !important; height:145% !important; left:20% !important; bottom:-75% !important; border-top:12px solid #fff !important; transform:rotate(-18deg) !important; }
-.reference-hero .technician-card { inset:-18px -5vw -18px -8% !important; clip-path:ellipse(89% 82% at 84% 50%) !important; }
-.reference-hero .technician-art img { object-position:50% center !important; }
-.reference-hero .hero-trust { padding:52px clamp(24px,8vw,120px) 48px !important; }
-.reference-hero .hero-trust span { min-height:150px !important; }
-.reference-hero .hero-trust .trust-icon { width:92px !important; height:86px !important; }
-.reference-hero .hero-trust .trust-icon svg { width:84px !important; height:84px !important; }
-.reference-hero .hero-trust b { font-size:20px !important; font-weight:500 !important; }
+/* Hero reference implementation — scoped to homepage hero only. */
+.reference-hero {
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 47%) minmax(0, 53%) !important;
+  align-items: stretch !important;
+  gap: 0 !important;
+  width: 100% !important;
+  height: min(716px, calc(100svh - 68px)) !important;
+  min-height: 600px !important;
+  padding: 0 0 0 60px !important;
+  background:
+    radial-gradient(circle at 49% 0%, rgba(50,77,110,.32), transparent 39%),
+    radial-gradient(circle at 52% 84%, rgba(242,139,32,.22), transparent 22%),
+    #071525 !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+}
 
-@media (max-width:699px) {
-  .reference-hero { background:radial-gradient(circle at 75% 70%,rgba(242,139,32,.13),transparent 25%),#0d1723 !important; }
-  .reference-hero::before { width:135% !important; height:72% !important; left:20% !important; bottom:-42% !important; border-top-width:6px !important; }
-  .reference-hero h1 { font-size:clamp(40px,12vw,54px) !important; }
-  .reference-hero h1 span { font-size:.76em !important; }
-  .reference-hero .hero-visual { min-height:275px !important; height:275px !important; }
-  .reference-hero .technician-card { inset:0 -16% 0 -10% !important; clip-path:ellipse(97% 86% at 84% 50%) !important; }
-  .reference-hero .hero-trust { padding:23px 4px 21px !important; }
-  .reference-hero .hero-trust span { min-height:82px !important; }
-  .reference-hero .hero-trust .trust-icon { width:43px !important; height:41px !important; }
-  .reference-hero .hero-trust .trust-icon svg { width:40px !important; height:40px !important; }
-  .reference-hero .hero-trust b { font-size:9px !important; }
+.reference-hero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 24% 52%, rgba(12,30,50,.24), transparent 42%);
+}
+
+.reference-hero::before {
+  content: "";
+  position: absolute;
+  z-index: 5;
+  width: 83%;
+  height: 132%;
+  left: 23%;
+  bottom: -71%;
+  border: 0;
+  border-top: 11px solid #fff;
+  border-radius: 50%;
+  transform: rotate(-18deg);
+  box-shadow: 0 0 18px rgba(255,255,255,.12), 0 0 34px rgba(242,139,32,.32);
+  pointer-events: none;
+}
+
+.reference-hero .hero-copy {
+  position: relative !important;
+  z-index: 7 !important;
+  align-self: center !important;
+  width: min(100%, 700px) !important;
+  max-width: 700px !important;
+  min-width: 0 !important;
+  padding: 4px 20px 20px 0 !important;
+}
+
+.reference-hero .hero-copy::before {
+  content: "ĐIỆN LẠNH NGUYỄN CƯỜNG";
+  display: inline-flex;
+  align-items: center;
+  min-height: 43px;
+  margin: 0 0 27px;
+  padding: 0 20px;
+  background: #ff7914;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: .01em;
+  transform: skewX(-9deg);
+  transform-origin: left center;
+}
+
+.reference-hero h1 {
+  width: 100% !important;
+  max-width: 690px !important;
+  margin: 0 !important;
+  color: #fff !important;
+  font-family: "Arial Narrow", "Roboto Condensed", Inter, Arial, sans-serif !important;
+  font-size: clamp(58px, 5.25vw, 80px) !important;
+  font-weight: 900 !important;
+  line-height: .99 !important;
+  letter-spacing: -.045em !important;
+  text-transform: none !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+.reference-hero h1 span {
+  display: block !important;
+  margin-top: 10px !important;
+  color: #ff7b16 !important;
+  font-family: "Arial Narrow", "Roboto Condensed", Inter, Arial, sans-serif !important;
+  font-size: 1em !important;
+  font-weight: 900 !important;
+  line-height: .98 !important;
+  letter-spacing: -.045em !important;
+}
+
+.reference-hero .hero-subtitle {
+  max-width: 670px !important;
+  margin: 27px 0 0 !important;
+  color: rgba(255,255,255,.94) !important;
+  font-family: Inter, system-ui, sans-serif !important;
+  font-size: clamp(17px, 1.45vw, 23px) !important;
+  font-weight: 400 !important;
+  line-height: 1.65 !important;
+  letter-spacing: 0 !important;
+  white-space: pre-line !important;
+}
+
+.reference-hero .hero-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 28px !important;
+  margin-top: 35px !important;
+}
+
+.reference-hero .hero-actions .btn {
+  min-width: 218px !important;
+  height: 60px !important;
+  min-height: 60px !important;
+  padding: 0 28px !important;
+  border-radius: 32px !important;
+  font-size: 19px !important;
+  font-weight: 850 !important;
+  letter-spacing: 0 !important;
+}
+
+.reference-hero .hero-actions .btn-primary {
+  gap: 10px !important;
+  background: #ff7b16 !important;
+  color: #fff !important;
+  box-shadow: 0 13px 28px rgba(255,123,22,.22) !important;
+}
+
+.reference-hero .hero-actions .btn-secondary {
+  gap: 10px !important;
+  border: 2px solid rgba(255,255,255,.92) !important;
+  color: #fff !important;
+  background: transparent !important;
+}
+
+.reference-hero .hero-actions .zalo-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: -.04em;
+}
+
+.reference-hero .hero-visual {
+  position: relative !important;
+  z-index: 2 !important;
+  align-self: stretch !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  display: block !important;
+}
+
+.reference-hero .technician-card {
+  position: absolute !important;
+  z-index: 1 !important;
+  inset: 0 -9% 0 -12% !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #dce0e4 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  clip-path: ellipse(92% 82% at 84% 50%) !important;
+}
+
+.reference-hero .technician-art {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  background: #dce0e4 !important;
+}
+
+.reference-hero .technician-art img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: 50% center !important;
+  filter: saturate(.92) contrast(1.04) !important;
+}
+
+.reference-hero .technician-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(6,18,31,.12), transparent 34%);
+  pointer-events: none;
+}
+
+.reference-trust {
+  position: relative !important;
+  z-index: 3 !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  width: 100% !important;
+  max-width: none !important;
+  gap: 0 !important;
+  margin: 0 !important;
+  padding: 52px clamp(40px, 8.5vw, 130px) 48px !important;
+  background: #fff !important;
+  color: #111 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+.reference-trust > span {
+  position: relative !important;
+  display: grid !important;
+  justify-items: center !important;
+  align-content: start !important;
+  min-height: 150px !important;
+  padding: 0 24px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.reference-trust > span + span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: #d9dde1;
+}
+
+.reference-trust .trust-icon {
+  width: 92px !important;
+  height: 86px !important;
+  display: grid !important;
+  place-items: center !important;
+  margin: 0 0 18px !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #146c3c !important;
+}
+
+.reference-trust .trust-icon svg {
+  width: 84px !important;
+  height: 84px !important;
+  overflow: visible !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 3.2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+.reference-trust .trust-icon svg circle,
+.reference-trust .trust-icon svg path {
+  vector-effect: non-scaling-stroke;
+}
+
+.reference-trust b {
+  display: block !important;
+  margin: 0 !important;
+  color: #111 !important;
+  font-family: Inter, system-ui, sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  line-height: 1.35 !important;
+  text-align: center !important;
+}
+
+/* Preserve the existing scroll-reveal system. */
+.reveal-up, .reveal-left, .reveal-right {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition-property: opacity, transform;
+  transition-duration: 720ms;
+  transition-timing-function: cubic-bezier(.22, 1, .36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal-up { transform: translate3d(0, 56px, 0); }
+.reveal-left { transform: translate3d(-64px, 0, 0); }
+.reveal-right { transform: translate3d(64px, 0, 0); }
+.reveal-up.is-visible, .reveal-left.is-visible, .reveal-right.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (max-width: 1100px) and (min-width: 700px) {
+  .reference-hero {
+    grid-template-columns: 51% 49% !important;
+    padding-left: 42px !important;
+  }
+  .reference-hero h1 { font-size: clamp(52px, 6vw, 68px) !important; }
+  .reference-hero .hero-subtitle { font-size: 17px !important; }
+  .reference-hero .hero-actions .btn { min-width: 185px !important; }
+  .reference-trust { padding-left: 24px !important; padding-right: 24px !important; }
+}
+
+@media (max-width: 699px) {
+  .reference-hero {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto 275px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 58px 22px 0 !important;
+    background:
+      radial-gradient(circle at 74% 78%, rgba(242,139,32,.16), transparent 27%),
+      #071525 !important;
+  }
+
+  .reference-hero::before {
+    width: 140% !important;
+    height: 68% !important;
+    left: 18% !important;
+    bottom: 5% !important;
+    border-top-width: 6px !important;
+    transform: rotate(-18deg) !important;
+  }
+
+  .reference-hero .hero-copy {
+    align-self: start !important;
+    width: 100% !important;
+    padding: 0 0 22px !important;
+  }
+
+  .reference-hero .hero-copy::before {
+    min-height: 34px !important;
+    margin-bottom: 18px !important;
+    padding: 0 14px !important;
+    font-size: 12px !important;
+  }
+
+  .reference-hero h1 {
+    max-width: 100% !important;
+    font-size: clamp(40px, 12vw, 54px) !important;
+    line-height: .98 !important;
+  }
+
+  .reference-hero h1 span {
+    margin-top: 7px !important;
+    font-size: .76em !important;
+  }
+
+  .reference-hero .hero-subtitle {
+    margin-top: 18px !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  .reference-hero .hero-actions {
+    gap: 9px !important;
+    margin-top: 22px !important;
+  }
+
+  .reference-hero .hero-actions .btn {
+    min-width: 0 !important;
+    width: auto !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    padding: 0 16px !important;
+    border-radius: 26px !important;
+    font-size: 14px !important;
+  }
+
+  .reference-hero .hero-actions .zalo-mark {
+    width: 23px !important;
+    height: 23px !important;
+    font-size: 8px !important;
+  }
+
+  .reference-hero .hero-visual {
+    min-height: 275px !important;
+    height: 275px !important;
+  }
+
+  .reference-hero .technician-card {
+    inset: 0 -18% 0 -14% !important;
+    clip-path: ellipse(98% 88% at 84% 50%) !important;
+  }
+
+  .reference-trust {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    padding: 23px 3px 21px !important;
+  }
+
+  .reference-trust > span {
+    min-height: 82px !important;
+    padding: 0 2px !important;
+  }
+
+  .reference-trust .trust-icon {
+    width: 43px !important;
+    height: 41px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .reference-trust .trust-icon svg {
+    width: 40px !important;
+    height: 40px !important;
+    stroke-width: 3.4 !important;
+  }
+
+  .reference-trust b {
+    font-size: 9px !important;
+    line-height: 1.25 !important;
+  }
 }
