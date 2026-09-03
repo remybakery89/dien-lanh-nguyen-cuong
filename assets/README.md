@@ -1,0 +1,1 @@
+Hero reference assets are uploaded to this directory.
