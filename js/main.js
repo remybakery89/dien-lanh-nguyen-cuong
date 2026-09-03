@@ -1,6 +1,6 @@
 const redesignStylesheet = document.createElement('link');
 redesignStylesheet.rel = 'stylesheet';
-redesignStylesheet.href = 'css/homepage-redesign-v1.css?v=1';
+redesignStylesheet.href = 'css/homepage-redesign-v1.css?v=2';
 document.head.appendChild(redesignStylesheet);
 
 const menu = document.querySelector('#main-menu');
@@ -23,50 +23,12 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') setMenu(false);
 });
 
-// Hero background: dark navy base with soft curved light trails instead of a flat gradient.
+// Hero background: keep the dark navy base and let the stylesheet draw the single white divider.
 const hero = document.querySelector('.hero');
 if (hero) {
   hero.style.background = '#0d1723';
   hero.style.overflow = 'hidden';
   hero.style.isolation = 'isolate';
-
-  const heroLines = document.createElement('div');
-  heroLines.setAttribute('aria-hidden', 'true');
-  heroLines.style.position = 'absolute';
-  heroLines.style.inset = '0';
-  heroLines.style.zIndex = '0';
-  heroLines.style.pointerEvents = 'none';
-  heroLines.style.overflow = 'hidden';
-  heroLines.innerHTML = `
-    <svg viewBox="0 0 1200 720" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;">
-      <defs>
-        <linearGradient id="heroTrailBlue" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#78b0d0" stop-opacity="0"/>
-          <stop offset=".30" stop-color="#78b0d0" stop-opacity=".18"/>
-          <stop offset=".62" stop-color="#9bc8dc" stop-opacity=".10"/>
-          <stop offset="1" stop-color="#9bc8dc" stop-opacity="0"/>
-        </linearGradient>
-        <linearGradient id="heroTrailOrange" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#e8892d" stop-opacity="0"/>
-          <stop offset=".46" stop-color="#e8892d" stop-opacity=".18"/>
-          <stop offset=".78" stop-color="#f0a04f" stop-opacity=".07"/>
-          <stop offset="1" stop-color="#e8892d" stop-opacity="0"/>
-        </linearGradient>
-        <filter id="heroTrailGlow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="6"/>
-        </filter>
-      </defs>
-      <path d="M-140 545 C120 300 300 675 565 430 S900 120 1340 315" fill="none" stroke="url(#heroTrailBlue)" stroke-width="2"/>
-      <path d="M-120 548 C145 305 305 700 575 440 S910 135 1340 325" fill="none" stroke="url(#heroTrailBlue)" stroke-width="10" opacity=".13" filter="url(#heroTrailGlow)"/>
-      <path d="M-120 230 C165 455 355 80 625 275 S970 540 1340 205" fill="none" stroke="url(#heroTrailOrange)" stroke-width="1.5"/>
-      <path d="M-80 650 C190 485 390 590 610 470 S990 270 1300 380" fill="none" stroke="rgba(255,255,255,.045)" stroke-width="1"/>
-    </svg>`;
-  hero.insertBefore(heroLines, hero.firstChild);
-
-  hero.querySelectorAll(':scope > *:not(div[aria-hidden="true"])').forEach((element) => {
-    if (element !== heroLines) element.style.position = element.style.position || 'relative';
-    if (element !== heroLines) element.style.zIndex = element.style.zIndex || '1';
-  });
 }
 
 const icons = {
@@ -85,14 +47,16 @@ document.querySelectorAll('.problem-icon, .service-icon, .menu-service-icon').fo
   }
 });
 
-// Hero subtitle: centered beneath the headline.
-const heroSubtitle = document.querySelector('.hero-subtitle');
-if (heroSubtitle) {
-  heroSubtitle.style.textAlign = 'center';
+// The trust band belongs below the complete hero, not inside the hero copy.
+const heroTrust = document.querySelector('.hero-trust');
+if (heroTrust && hero) {
+  hero.insertAdjacentElement('afterend', heroTrust);
 }
 
-// Hero trust row: four visual proof points, informational rather than button-like.
-const heroTrust = document.querySelector('.hero-trust');
+const heroSubtitle = document.querySelector('.hero-subtitle');
+if (heroSubtitle) heroSubtitle.style.textAlign = 'left';
+
+// Hero trust row: exactly four visual proof points, informational rather than button-like.
 if (heroTrust) {
   const trustItems = [...heroTrust.querySelectorAll(':scope > span')];
   if (trustItems[1]) trustItems[1].remove();
@@ -113,11 +77,11 @@ if (heroTrust) {
   heroTrust.style.display = 'grid';
   heroTrust.style.gridTemplateColumns = 'repeat(4, minmax(0, 1fr))';
   heroTrust.style.gap = '0';
-  heroTrust.style.marginTop = '26px';
+  heroTrust.style.marginTop = '0';
   heroTrust.style.alignItems = 'start';
   heroTrust.style.overflow = 'visible';
   heroTrust.style.width = '100%';
-  heroTrust.style.maxWidth = '760px';
+  heroTrust.style.maxWidth = 'none';
 
   heroTrust.querySelectorAll(':scope > span').forEach((item, index) => {
     const icon = item.querySelector('.trust-icon');
@@ -126,24 +90,26 @@ if (heroTrust) {
       icon.innerHTML = trustIcons[index];
       icon.style.display = 'grid';
       icon.style.placeItems = 'center';
-      icon.style.width = '42px';
-      icon.style.height = '42px';
-      icon.style.margin = '0 auto 9px';
-      icon.style.color = '#72c784';
+      icon.style.width = '48px';
+      icon.style.height = '48px';
+      icon.style.margin = '0 auto 10px';
+      icon.style.color = '#247a46';
     }
     if (label) {
       label.innerHTML = trustLabels[index];
       label.style.display = 'block';
-      label.style.fontSize = '11px';
-      label.style.fontWeight = '650';
+      label.style.fontSize = '14px';
+      label.style.fontWeight = '700';
       label.style.lineHeight = '1.35';
       label.style.whiteSpace = 'normal';
       label.style.textAlign = 'center';
-      label.style.color = 'rgba(255,255,255,.86)';
+      label.style.color = '#17202a';
     }
-    item.style.display = 'block';
+    item.style.display = 'grid';
+    item.style.justifyItems = 'center';
+    item.style.alignContent = 'start';
     item.style.minHeight = '0';
-    item.style.padding = '0 8px';
+    item.style.padding = '0 18px';
     item.style.border = '0';
     item.style.borderRadius = '0';
     item.style.background = 'transparent';
@@ -156,11 +122,9 @@ if (heroTrust) {
     const mobile = window.matchMedia('(max-width: 699px)').matches;
     heroTrust.style.gridTemplateColumns = 'repeat(4, minmax(0, 1fr))';
     heroTrust.style.paddingBottom = '0';
-    heroTrust.style.marginLeft = mobile ? '-4px' : '0';
-    heroTrust.style.marginRight = mobile ? '-4px' : '0';
     heroTrust.querySelectorAll(':scope > span').forEach((item) => {
-      item.style.paddingLeft = mobile ? '3px' : '8px';
-      item.style.paddingRight = mobile ? '3px' : '8px';
+      item.style.paddingLeft = mobile ? '4px' : '18px';
+      item.style.paddingRight = mobile ? '4px' : '18px';
     });
   };
   mobileTrustLayout();
