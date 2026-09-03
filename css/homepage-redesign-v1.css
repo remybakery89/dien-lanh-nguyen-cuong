@@ -1,34 +1,364 @@
 /* =========================================================
-   HERO — SINGLE CLEAN IMPLEMENTATION OF THE APPROVED REFERENCE
+   HOMEPAGE HERO — CLEAN REFERENCE IMPLEMENTATION
+   Uses the supplied hero image and four supplied trust icons.
    ========================================================= */
-.hero.reference-hero{position:relative;display:grid;grid-template-columns:46% 54%;align-items:stretch;width:100%;height:716px;min-height:716px;padding:0;gap:0;overflow:hidden;isolation:isolate;background:#0d1723!important;color:#fff}
-.hero.reference-hero:before{content:"";position:absolute;z-index:3;pointer-events:none;width:84%;height:150%;left:19%;bottom:-76%;border:0;border-top:11px solid #fff;border-radius:50%;transform:rotate(-18deg);box-shadow:0 0 24px rgba(255,255,255,.08)}
-.hero.reference-hero:after{content:"";position:absolute;z-index:2;pointer-events:none;width:430px;height:190px;left:27%;bottom:-105px;border-radius:50%;background:rgba(242,139,32,.28);filter:blur(26px)}
-.hero.reference-hero>*{position:relative;z-index:4}
-.hero.reference-hero .hero-copy{width:100%;max-width:none;align-self:center;padding:0 30px 0 clamp(40px,4vw,62px);z-index:5}
-.hero.reference-hero .hero-copy>.eyebrow{display:none}
-.hero.reference-hero .hero-copy:before{content:"ĐIỆN LẠNH NGUYỄN CƯỜNG";display:inline-block;margin:0 0 28px;padding:10px 20px;background:#f28b20;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1;font-weight:800;letter-spacing:.01em;transform:skewX(-8deg)}
-.hero.reference-hero h1{max-width:690px;margin:0;color:#fff!important;font-family:Arial,Helvetica,sans-serif!important;font-size:clamp(58px,5.3vw,82px)!important;font-weight:800!important;line-height:.98!important;letter-spacing:-.04em!important;text-transform:none!important;overflow-wrap:normal;word-break:normal}
-.hero.reference-hero h1:before,.hero.reference-hero h1:after,.hero.reference-hero h1 span:after{content:none!important}
-.hero.reference-hero h1 span{display:block!important;margin-top:12px;color:#f28b20!important;font-family:Arial,Helvetica,sans-serif!important;font-size:.92em!important;font-weight:800!important;line-height:1!important;letter-spacing:-.04em!important}
-.hero.reference-hero .hero-subtitle{max-width:650px;margin:28px 0 0!important;color:#fff!important;font-family:Arial,Helvetica,sans-serif!important;font-size:18px!important;font-weight:400!important;line-height:1.5!important;letter-spacing:0!important;white-space:pre-line;text-align:left!important}
-.hero.reference-hero .hero-actions{display:flex!important;align-items:center;gap:28px;margin-top:36px!important}
-.hero.reference-hero .hero-actions .btn{display:inline-flex;align-items:center;justify-content:center;min-width:218px;min-height:60px;padding:0 28px;border-radius:999px;font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:800;line-height:1}
-.hero.reference-hero .hero-actions .btn-primary{background:#f28b20!important;color:#fff!important;border:0;box-shadow:none!important}
-.hero.reference-hero .hero-actions .btn-secondary{background:transparent!important;color:#fff!important;border:2px solid #fff!important}
-.hero.reference-hero .hero-actions .btn-primary:after{display:none!important}
-.hero.reference-hero .zalo-mark{display:inline-grid!important;place-items:center;width:28px;height:28px;margin-right:9px;border-radius:50%;background:#fff;color:#111;font-size:10px;font-weight:800}
-.hero.reference-hero .hero-visual{position:relative;width:100%;min-width:0;height:716px;min-height:716px;margin:0;display:block}
-.hero.reference-hero .visual-glow,.hero.reference-hero .service-orbit{display:none!important}
-.hero.reference-hero .technician-card{position:absolute!important;inset:0 -3vw 0 -8%!important;width:auto!important;height:auto!important;max-width:none!important;margin:0;border:0!important;border-radius:0!important;background:#e7eaed!important;box-shadow:none!important;overflow:hidden!important;transform:none!important;clip-path:ellipse(88% 79% at 84% 50%)!important}
-.hero.reference-hero .technician-art{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;background:#e7eaed!important}
-.hero.reference-hero .technician-art img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;filter:none!important}
-.hero.reference-hero .technician-art>div:last-child{display:none!important}
-.hero-trust{position:relative;z-index:10;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;width:100%!important;max-width:none!important;margin:0!important;padding:52px clamp(40px,8vw,120px) 48px!important;gap:0!important;background:#fff!important;color:#111!important}
-.hero-trust>span{position:relative;display:grid!important;justify-items:center;align-content:start;gap:12px;min-height:150px;padding:0 24px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:#111!important;text-align:center}
-.hero-trust>span:not(:last-child):after{content:"";position:absolute;top:0;right:0;width:1px;height:150px;background:#ddd}
-.hero-trust .trust-icon{display:grid!important;place-items:center;width:92px!important;height:86px!important;margin:0 auto 6px!important;color:#176b3b!important}
-.hero-trust .trust-icon svg{display:block;width:84px!important;height:84px!important;fill:none!important;stroke:currentColor!important;stroke-width:2.1!important;stroke-linecap:round;stroke-linejoin:round}
-.hero-trust b{display:block!important;color:#111!important;font-family:Arial,Helvetica,sans-serif!important;font-size:20px!important;font-weight:400!important;line-height:1.35!important;text-align:center!important;white-space:normal!important}
-@media(max-width:899px){.hero.reference-hero{grid-template-columns:1fr;height:auto;min-height:0}.hero.reference-hero .hero-copy{padding:44px 24px 34px}.hero.reference-hero .hero-visual{height:390px;min-height:390px}.hero.reference-hero .technician-card{inset:0 -15% 0 -8%!important;clip-path:ellipse(94% 82% at 84% 50%)!important}}
-@media(max-width:699px){.hero.reference-hero .hero-copy{padding:30px 16px 24px}.hero.reference-hero:before{width:135%;height:70%;left:22%;bottom:-39%;border-top-width:6px}.hero.reference-hero:after{width:260px;height:120px;left:35%;bottom:-65px}.hero.reference-hero .hero-copy:before{margin-bottom:18px;padding:7px 13px;font-size:9px}.hero.reference-hero h1{max-width:350px;font-size:clamp(40px,12vw,54px)!important;line-height:.95!important}.hero.reference-hero h1 span{margin-top:9px;font-size:.82em!important}.hero.reference-hero .hero-subtitle{max-width:350px;margin-top:19px!important;font-size:13px!important;line-height:1.45!important}.hero.reference-hero .hero-actions{display:grid!important;grid-template-columns:1fr 1fr;gap:8px;margin-top:21px!important}.hero.reference-hero .hero-actions .btn{min-width:0;min-height:50px;padding:0 8px;font-size:12px}.hero.reference-hero .zalo-mark{width:22px;height:22px;margin-right:5px;font-size:8px}.hero.reference-hero .hero-visual{height:275px;min-height:275px}.hero.reference-hero .technician-card{inset:0 -16% 0 -10%!important;clip-path:ellipse(97% 86% at 84% 50%)!important}.hero-trust{grid-template-columns:repeat(4,minmax(0,1fr))!important;padding:23px 4px 21px!important}.hero-trust>span{min-height:82px;padding:0 2px!important;gap:5px}.hero-trust>span:not(:last-child):after{height:78px}.hero-trust .trust-icon{width:43px!important;height:41px!important;margin-bottom:2px!important}.hero-trust .trust-icon svg{width:40px!important;height:40px!important;stroke-width:2.2!important}.hero-trust b{font-size:9px!important;line-height:1.2!important}}
+
+.hero.reference-hero {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: min(46.615vw, 716px);
+  min-height: 560px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: #071525 url('../assets/hero-bg.png') center center / cover no-repeat !important;
+  color: #fff;
+}
+
+.hero.reference-hero .hero-copy {
+  position: relative;
+  z-index: 2;
+  width: 50%;
+  max-width: 760px;
+  margin: 0;
+  padding: clamp(70px, 7.7vw, 118px) 0 50px clamp(60px, 4vw, 62px);
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.hero.reference-hero .hero-copy > .eyebrow {
+  display: none !important;
+}
+
+.hero.reference-hero .hero-copy::before {
+  content: 'ĐIỆN LẠNH NGUYỄN CƯỜNG';
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  width: fit-content;
+  height: 42px;
+  margin: 0 0 27px;
+  padding: 0 20px;
+  background: #f28b20;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  transform: skewX(-8deg);
+}
+
+.hero.reference-hero h1 {
+  position: relative;
+  z-index: 2;
+  width: auto;
+  max-width: 700px;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #fff !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: clamp(54px, 5.2vw, 80px) !important;
+  font-weight: 700 !important;
+  line-height: .99 !important;
+  letter-spacing: -2.8px !important;
+  text-transform: none !important;
+  text-align: left !important;
+}
+
+.hero.reference-hero h1::before,
+.hero.reference-hero h1::after,
+.hero.reference-hero h1 span::before,
+.hero.reference-hero h1 span::after {
+  display: none !important;
+  content: none !important;
+}
+
+.hero.reference-hero h1 span {
+  display: block !important;
+  margin: 13px 0 0 !important;
+  color: #f28b20 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: .91em !important;
+  font-weight: 700 !important;
+  line-height: .99 !important;
+  letter-spacing: -2.5px !important;
+  text-transform: none !important;
+}
+
+.hero.reference-hero .hero-subtitle {
+  width: auto;
+  max-width: 650px;
+  margin: 29px 0 0 !important;
+  padding: 0 !important;
+  color: #fff !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+  text-align: left !important;
+  white-space: pre-line !important;
+}
+
+.hero.reference-hero .hero-actions {
+  display: flex !important;
+  align-items: center;
+  gap: 28px;
+  margin: 37px 0 0 !important;
+  padding: 0 !important;
+}
+
+.hero.reference-hero .hero-actions .btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-width: 218px;
+  height: 60px;
+  padding: 0 28px !important;
+  border-radius: 999px !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  box-sizing: border-box;
+}
+
+.hero.reference-hero .hero-actions .btn-primary {
+  background: #f28b20 !important;
+  color: #fff !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.hero.reference-hero .hero-actions .btn-secondary {
+  background: transparent !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+  box-shadow: none !important;
+}
+
+.hero.reference-hero .hero-actions .btn-primary::after {
+  display: none !important;
+  content: none !important;
+}
+
+.hero.reference-hero .zalo-mark {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-right: 9px;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* The supplied hero image already contains the technician, curve and glow. */
+.hero.reference-hero .hero-visual {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 1 !important;
+  pointer-events: none;
+}
+
+.hero.reference-hero .hero-visual > * {
+  display: none !important;
+}
+
+/* Trust strip */
+.hero-trust.reference-trust {
+  position: relative;
+  z-index: 5;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 52px clamp(40px, 8vw, 120px) 48px !important;
+  gap: 0 !important;
+  background: #fff !important;
+  color: #111 !important;
+  box-sizing: border-box;
+}
+
+.hero-trust.reference-trust > span {
+  position: relative;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 150px;
+  padding: 0 24px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.hero-trust.reference-trust > span:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 150px;
+  background: #ddd;
+}
+
+.hero-trust.reference-trust .trust-icon {
+  display: block !important;
+  width: 92px !important;
+  height: 86px !important;
+  margin: 0 auto 20px !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  flex: 0 0 auto;
+}
+
+.hero-trust.reference-trust .trust-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hero-trust.reference-trust b {
+  display: block !important;
+  margin: 0 !important;
+  color: #111 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  line-height: 1.35 !important;
+  text-align: center !important;
+}
+
+@media (max-width: 899px) {
+  .hero.reference-hero {
+    height: auto;
+    min-height: 0;
+    background-position: center top;
+  }
+
+  .hero.reference-hero .hero-copy {
+    width: 55%;
+    min-height: 520px;
+    padding: 55px 0 40px 35px;
+  }
+
+  .hero.reference-hero h1 {
+    font-size: clamp(42px, 7vw, 62px) !important;
+  }
+
+  .hero.reference-hero .hero-subtitle {
+    font-size: 15px !important;
+  }
+
+  .hero-trust.reference-trust {
+    padding: 36px 20px 34px !important;
+  }
+
+  .hero-trust.reference-trust > span {
+    padding: 0 10px !important;
+  }
+}
+
+@media (max-width: 699px) {
+  .hero.reference-hero {
+    min-height: 520px;
+    background-size: auto 520px;
+    background-position: center top;
+  }
+
+  .hero.reference-hero .hero-copy {
+    width: 65%;
+    min-height: 520px;
+    padding: 30px 0 24px 16px;
+  }
+
+  .hero.reference-hero .hero-copy::before {
+    height: 30px;
+    margin-bottom: 16px;
+    padding: 0 11px;
+    font-size: 9px;
+  }
+
+  .hero.reference-hero h1 {
+    max-width: 310px;
+    font-size: clamp(35px, 10vw, 48px) !important;
+    letter-spacing: -1.6px !important;
+  }
+
+  .hero.reference-hero h1 span {
+    margin-top: 8px !important;
+    letter-spacing: -1.4px !important;
+  }
+
+  .hero.reference-hero .hero-subtitle {
+    max-width: 300px;
+    margin-top: 17px !important;
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+  }
+
+  .hero.reference-hero .hero-actions {
+    gap: 7px;
+    margin-top: 20px !important;
+  }
+
+  .hero.reference-hero .hero-actions .btn {
+    min-width: 0;
+    height: 46px;
+    padding: 0 10px !important;
+    font-size: 11px !important;
+  }
+
+  .hero.reference-hero .zalo-mark {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    font-size: 7px;
+  }
+
+  .hero-trust.reference-trust {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    padding: 23px 4px 21px !important;
+  }
+
+  .hero-trust.reference-trust > span {
+    min-height: 82px;
+    padding: 0 2px !important;
+  }
+
+  .hero-trust.reference-trust > span:not(:last-child)::after {
+    height: 78px;
+  }
+
+  .hero-trust.reference-trust .trust-icon {
+    width: 43px !important;
+    height: 41px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .hero-trust.reference-trust b {
+    font-size: 9px !important;
+    line-height: 1.2 !important;
+  }
+}
