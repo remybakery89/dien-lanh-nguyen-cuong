@@ -4,60 +4,14 @@
    working structure or scroll-reveal implementation.
    ========================================================= */
 
-/* Hero: stronger hierarchy and more premium visual */
-.hero {
-  position: relative;
-  isolation: isolate;
-  background:
-    radial-gradient(circle at 82% 24%, rgba(232,137,45,.22), transparent 30%),
-    radial-gradient(circle at 18% 90%, rgba(72,116,156,.18), transparent 32%),
-    linear-gradient(135deg, #101c2a 0%, #1b2d40 58%, #243b50 100%);
-}
-.hero:after {
-  content: "";
-  position: absolute;
-  inset: auto -10% -110px auto;
-  width: 430px;
-  height: 260px;
-  border-radius: 50%;
-  background: rgba(232,137,45,.08);
-  filter: blur(2px);
-  z-index: -1;
-}
+.hero { position: relative; isolation: isolate; background: radial-gradient(circle at 82% 24%, rgba(232,137,45,.22), transparent 30%), radial-gradient(circle at 18% 90%, rgba(72,116,156,.18), transparent 32%), linear-gradient(135deg, #101c2a 0%, #1b2d40 58%, #243b50 100%); }
+.hero:after { content: ""; position: absolute; inset: auto -10% -110px auto; width: 430px; height: 260px; border-radius: 50%; background: rgba(232,137,45,.08); filter: blur(2px); z-index: -1; }
 .hero-copy { max-width: 680px; }
-.hero .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  padding: 8px 11px;
-  margin-bottom: 18px;
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 999px;
-  background: rgba(255,255,255,.06);
-  color: #f6bc7d;
-  letter-spacing: .11em;
-}
-.hero .eyebrow:before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 5px rgba(232,137,45,.12);
-}
+.hero .eyebrow { display: inline-flex; align-items: center; gap: 9px; padding: 8px 11px; margin-bottom: 18px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; background: rgba(255,255,255,.06); color: #f6bc7d; letter-spacing: .11em; }
+.hero .eyebrow:before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px rgba(232,137,45,.12); }
 .hero h1 { max-width: 760px; font-weight: 850; text-wrap: balance; }
 .hero h1 span { position: relative; display: inline-block; }
-.hero h1 span:after {
-  content: "";
-  position: absolute;
-  left: 2px;
-  right: 4px;
-  bottom: -5px;
-  height: 5px;
-  border-radius: 99px;
-  background: var(--accent);
-  opacity: .8;
-}
+.hero h1 span:after { content: ""; position: absolute; left: 2px; right: 4px; bottom: -5px; height: 5px; border-radius: 99px; background: var(--accent); opacity: .8; }
 .hero-subtitle { margin-top: 23px; font-size: 13px; }
 .hero-lead { max-width: 590px; color: rgba(255,255,255,.7); }
 .hero-actions { margin-top: 25px; }
@@ -66,36 +20,13 @@
 .btn-primary:hover { transform: translateY(-2px); }
 .btn-secondary { background: rgba(255,255,255,.055); backdrop-filter: blur(8px); }
 .btn-secondary:hover { background: rgba(255,255,255,.11); }
-.hero-trust {
-  display: grid;
-  grid-template-columns: repeat(3, max-content);
-  gap: 9px;
-  margin-top: 22px;
-}
-.hero-trust span {
-  padding: 8px 10px;
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 999px;
-  background: rgba(255,255,255,.045);
-  color: rgba(255,255,255,.72);
-  font-size: 10px;
-}
+.hero-trust { display: grid; grid-template-columns: repeat(3, max-content); gap: 9px; margin-top: 22px; }
+.hero-trust span { padding: 8px 10px; border: 1px solid rgba(255,255,255,.1); border-radius: 999px; background: rgba(255,255,255,.045); color: rgba(255,255,255,.72); font-size: 10px; }
 
-/* Hero visual becomes an equipment/workspace composition */
 .hero-visual { min-height: 380px; }
 .visual-glow { width: 350px; height: 350px; background: rgba(232,137,45,.13); }
-.technician-card {
-  width: min(100%, 390px);
-  border-radius: 30px;
-  background: rgba(255,255,255,.075);
-  border-color: rgba(255,255,255,.18);
-}
-.technician-art {
-  height: 315px;
-  background:
-    radial-gradient(circle at 68% 28%, rgba(232,137,45,.25), transparent 22%),
-    linear-gradient(145deg, #dfe6eb 0%, #aebbc6 100%);
-}
+.technician-card { width: min(100%, 390px); border-radius: 30px; background: rgba(255,255,255,.075); border-color: rgba(255,255,255,.18); }
+.technician-art { height: 315px; background: radial-gradient(circle at 68% 28%, rgba(232,137,45,.25), transparent 22%), linear-gradient(145deg, #dfe6eb 0%, #aebbc6 100%); }
 .person-head { top: 58px; width: 100px; height: 114px; }
 .person-head:before { width: 114px; }
 .person-body { width: 230px; }
@@ -103,165 +34,73 @@
 .toolbox { background: #303f4c; }
 .visual-caption { padding: 16px 19px 18px; }
 .visual-caption strong { font-size: 16px; }
-.service-orbit {
-  width: 58px;
-  height: 58px;
-  border-radius: 18px;
-  border: 1px solid rgba(23,37,54,.08);
-}
+.service-orbit { width: 58px; height: 58px; border-radius: 18px; border: 1px solid rgba(23,37,54,.08); }
 
-/* Trust strip: use the existing hero trust as the first proof layer */
 .hero-trust span { position: relative; }
-
-/* Section headings: more editorial, less template-like */
 .section-heading { max-width: 720px; margin-bottom: 38px; }
-.eyebrow-dark {
-  display: inline-flex;
-  padding: 7px 10px;
-  border-radius: 999px;
-  background: rgba(232,137,45,.09);
-  letter-spacing: .11em;
-}
+.eyebrow-dark { display: inline-flex; padding: 7px 10px; border-radius: 999px; background: rgba(232,137,45,.09); letter-spacing: .11em; }
 .section-heading h2 { font-weight: 850; text-wrap: balance; }
 .section-heading > p:last-child { max-width: 560px; }
 
-/* Problem section remains the signature UX, but cards feel more tappable */
 .problem-section { padding-top: 86px; }
 .problem-grid { gap: 14px; }
-.problem-card {
-  position: relative;
-  padding: 18px;
-  border-radius: 20px;
-  background: linear-gradient(145deg, #fbfaf7, #f4f1eb);
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-}
-.problem-card:after {
-  content: "→";
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--white);
-  color: var(--navy);
-  font-weight: 850;
-  box-shadow: 0 5px 14px rgba(23,37,54,.08);
-}
+.problem-card { position: relative; padding: 18px; border-radius: 20px; background: linear-gradient(145deg, #fbfaf7, #f4f1eb); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.problem-card:after { content: "→"; position: absolute; right: 16px; top: 16px; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--white); color: var(--navy); font-weight: 850; box-shadow: 0 5px 14px rgba(23,37,54,.08); }
 .problem-card:hover { transform: translateY(-4px); }
 .problem-card li { transition: transform .2s ease, border-color .2s ease, color .2s ease; }
 .problem-card li:hover { transform: translateX(3px); }
 
-/* Services: richer visual blocks without changing the existing HTML */
 .services-section { padding-top: 86px; }
 .services-grid { gap: 14px; }
-.service-card {
-  position: relative;
-  min-height: 250px;
-  overflow: hidden;
-  border-radius: 22px;
-  background:
-    radial-gradient(circle at 85% 18%, rgba(232,137,45,.12), transparent 25%),
-    linear-gradient(145deg, #fbfaf7, #f1eee8);
-  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
-}
-.service-card:after {
-  content: "";
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  right: -52px;
-  bottom: -52px;
-  border-radius: 50%;
-  border: 1px solid rgba(23,37,54,.08);
-}
+.service-card { position: relative; min-height: 250px; overflow: hidden; border-radius: 22px; background: radial-gradient(circle at 85% 18%, rgba(232,137,45,.12), transparent 25%), linear-gradient(145deg, #fbfaf7, #f1eee8); transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease; }
+.service-card:after { content: ""; position: absolute; width: 150px; height: 150px; right: -52px; bottom: -52px; border-radius: 50%; border: 1px solid rgba(23,37,54,.08); }
 .service-card:hover { transform: translateY(-6px); }
-.service-card-featured {
-  background:
-    radial-gradient(circle at 84% 18%, rgba(232,137,45,.3), transparent 26%),
-    linear-gradient(145deg, #172536, #294158);
-}
-.service-icon {
-  position: relative;
-  z-index: 2;
-  border: 1px solid rgba(23,37,54,.08);
-  box-shadow: 0 8px 18px rgba(23,37,54,.08);
-}
+.service-card-featured { background: radial-gradient(circle at 84% 18%, rgba(232,137,45,.3), transparent 26%), linear-gradient(145deg, #172536, #294158); }
+.service-icon { position: relative; z-index: 2; border: 1px solid rgba(23,37,54,.08); box-shadow: 0 8px 18px rgba(23,37,54,.08); }
 .service-card h3 { font-weight: 850; }
 .arrow { position: relative; z-index: 2; transition: transform .2s ease; }
 .service-card:hover .arrow { transform: rotate(8deg) scale(1.06); }
 
-/* Trust: make the proof feel deliberate */
+/* Service cards: make each one read like a compact equipment tile */
+.service-card { display: flex; flex-direction: column; justify-content: space-between; isolation: isolate; }
+.service-card:before { content: ""; position: absolute; z-index: -1; width: 210px; height: 210px; top: 42px; right: -66px; border-radius: 50%; background: rgba(23,37,54,.045); box-shadow: inset 0 0 0 1px rgba(23,37,54,.035); }
+.service-card-featured:before { background: rgba(255,255,255,.055); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+.service-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.service-icon { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 19px; background: rgba(255,255,255,.82); font-size: 28px; }
+.service-card-featured .service-icon { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.15); }
+.service-card .arrow { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--white); color: var(--navy); box-shadow: 0 7px 16px rgba(23,37,54,.08); font-size: 18px; }
+.service-card-featured .arrow { background: var(--accent); color: #fff; }
+.service-card > div:last-child { position: relative; z-index: 2; max-width: 92%; }
+.service-card h3 { margin-bottom: 7px; letter-spacing: -.02em; }
+.service-card p { margin: 0; line-height: 1.55; opacity: .72; }
+.service-card-featured h3, .service-card-featured p { color: #fff; }
+.service-card-featured p { opacity: .7; }
+.service-card:nth-child(2):before { transform: scale(.9); }
+.service-card:nth-child(3):before { transform: scale(1.08); }
+.service-card:nth-child(4):before { transform: scale(.82); }
+.service-card:nth-child(5):before { transform: scale(1.02); }
+
 .trust-section { position: relative; }
 .trust-grid { gap: 12px; }
-.trust-item {
-  min-height: 74px;
-  border-radius: 18px;
-  box-shadow: 0 5px 18px rgba(23,37,54,.04);
-  transition: transform .2s ease, box-shadow .2s ease;
-}
+.trust-item { min-height: 74px; border-radius: 18px; box-shadow: 0 5px 18px rgba(23,37,54,.04); transition: transform .2s ease, box-shadow .2s ease; }
 .trust-item:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .trust-item strong { width: 32px; height: 32px; }
 .proof-note { border-radius: 0 12px 12px 0; }
 
-/* Process: less grid-like, more journey */
-.process-step {
-  position: relative;
-  border-radius: 18px;
-  background: #faf9f6;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
+.process-step { position: relative; border-radius: 18px; background: #faf9f6; transition: transform .2s ease, box-shadow .2s ease; }
 .process-step:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-.process-step > span {
-  display: inline-grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(232,137,45,.12);
-}
+.process-step > span { display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(232,137,45,.12); }
 
-/* Price: make it feel like a real pricing preview */
-.price-section {
-  position: relative;
-  background:
-    radial-gradient(circle at 85% 10%, rgba(232,137,45,.16), transparent 24%),
-    linear-gradient(135deg, #111d2a, #1d3043);
-}
+.price-section { position: relative; background: radial-gradient(circle at 85% 10%, rgba(232,137,45,.16), transparent 24%), linear-gradient(135deg, #111d2a, #1d3043); }
 .price-preview { border-top-color: rgba(255,255,255,.2); }
 .price-preview div, .price-preview b { padding: 17px 0; }
 .price-preview div { gap: 5px; }
 .price-preview strong { font-size: 15px; }
-.price-preview b {
-  min-width: 68px;
-  padding-left: 12px;
-  padding-right: 12px;
-  border-radius: 999px;
-  color: #fff;
-  background: rgba(232,137,45,.16);
-  text-align: center;
-}
+.price-preview b { min-width: 68px; padding-left: 12px; padding-right: 12px; border-radius: 999px; color: #fff; background: rgba(232,137,45,.16); text-align: center; }
 
-/* Experience should no longer look like an empty placeholder */
-.experience-section {
-  min-height: 300px;
-  background:
-    linear-gradient(180deg, #fff 0%, #f7f5f1 100%);
-}
-.experience-section .section-heading > p:last-child {
-  padding: 20px;
-  border: 1px dashed #d9dde0;
-  border-radius: 18px;
-  background: rgba(255,255,255,.7);
-}
-
-/* Footer: stronger close */
-.site-footer {
-  padding-top: 38px;
-  border-top: 1px solid rgba(255,255,255,.08);
-}
+.experience-section { min-height: 300px; background: linear-gradient(180deg, #fff 0%, #f7f5f1 100%); }
+.experience-section .section-heading > p:last-child { padding: 20px; border: 1px dashed #d9dde0; border-radius: 18px; background: rgba(255,255,255,.7); }
+.site-footer { padding-top: 38px; border-top: 1px solid rgba(255,255,255,.08); }
 
 @media (min-width: 700px) {
   .hero-trust { grid-template-columns: repeat(3, max-content); }
@@ -277,6 +116,7 @@
   .technician-art { height: 350px; }
   .problem-card:after { right: 20px; top: 20px; }
   .service-card { min-height: 290px; padding: 30px; }
+  .service-icon { width: 68px; height: 68px; font-size: 30px; }
 }
 
 @media (max-width: 699px) {
@@ -287,4 +127,7 @@
   .problem-card:after { width: 30px; height: 30px; right: 14px; top: 14px; }
   .service-card { min-height: 205px; padding: 16px; }
   .service-card h3 { font-size: 17px; }
+  .service-icon { width: 54px; height: 54px; border-radius: 17px; font-size: 25px; }
+  .service-card .arrow { width: 34px; height: 34px; font-size: 16px; }
+  .service-card:before { width: 160px; height: 160px; top: 54px; right: -55px; }
 }
