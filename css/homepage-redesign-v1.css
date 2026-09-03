@@ -1,4 +1,431 @@
 /* =========================================================
+   HOMEPAGE V1 — VISUAL REDESIGN
+   Purpose: elevate the existing homepage without touching the
+   working structure or scroll-reveal implementation.
+   ========================================================= */
+
+.hero { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(circle at 82% 24%, rgba(232,137,45,.16), transparent 26%), radial-gradient(circle at 16% 88%, rgba(72,116,156,.12), transparent 30%), #101923; }
+.hero:before { content: ""; position: absolute; z-index: 0; pointer-events: none; width: 150%; height: 72%; left: -24%; bottom: -28%; border-top: 10px solid rgba(255,255,255,.88); border-radius: 50%; transform: rotate(-6deg); box-shadow: 0 -1px 0 rgba(255,255,255,.18), 0 -12px 28px rgba(255,255,255,.035); }
+.hero:after { content: ""; position: absolute; z-index: 0; pointer-events: none; inset: auto -12% -120px auto; width: 470px; height: 290px; border-radius: 50%; background: rgba(232,137,45,.075); filter: blur(3px); }
+.hero > * { position: relative; z-index: 1; }
+.hero-copy { max-width: 680px; }
+.hero .eyebrow { display: inline-flex; align-items: center; gap: 9px; padding: 8px 11px; margin-bottom: 18px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; background: rgba(255,255,255,.06); color: #f6bc7d; letter-spacing: .11em; }
+.hero .eyebrow:before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px rgba(232,137,45,.12); }
+.hero h1 { max-width: 760px; font-weight: 850; text-wrap: balance; }
+.hero h1 span { position: relative; display: inline-block; }
+.hero h1 span:after { content: ""; position: absolute; left: 2px; right: 4px; bottom: -5px; height: 5px; border-radius: 99px; background: var(--accent); opacity: .8; }
+.hero-subtitle { margin-top: 23px; font-size: 13px; }
+.hero-lead { max-width: 590px; color: rgba(255,255,255,.7); }
+.hero-actions { margin-top: 25px; }
+.btn { min-height: 54px; border-radius: 15px; }
+.btn-primary { box-shadow: 0 14px 30px rgba(232,137,45,.28); }
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-secondary { background: rgba(255,255,255,.055); backdrop-filter: blur(8px); }
+.btn-secondary:hover { background: rgba(255,255,255,.11); }
+.hero-trust { display: grid; grid-template-columns: repeat(5, max-content); gap: 9px; margin-top: 22px; }
+.hero-trust span { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 38px; padding: 7px 10px; border: 1px solid rgba(255,255,255,.1); border-radius: 999px; background: rgba(255,255,255,.045); color: rgba(255,255,255,.86); font-size: 10px; }
+.hero-trust b { font-size: 10px; font-weight: 650; white-space: nowrap; }
+.trust-icon { display: grid; place-items: center; flex: 0 0 auto; width: 24px; height: 24px; color: #8fd19a; }
+.trust-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.hero-trust span:hover { border-color: rgba(143,209,154,.28); background: rgba(143,209,154,.07); }
+
+.hero-visual { min-height: 380px; }
+.visual-glow { width: 350px; height: 350px; background: rgba(232,137,45,.13); }
+.technician-card { width: min(100%, 390px); border-radius: 30px; background: rgba(255,255,255,.075); border-color: rgba(255,255,255,.18); }
+.technician-art { height: 315px; background: radial-gradient(circle at 68% 28%, rgba(232,137,45,.25), transparent 22%), linear-gradient(145deg, #dfe6eb 0%, #aebbc6 100%); }
+.person-head { top: 58px; width: 100px; height: 114px; }
+.person-head:before { width: 114px; }
+.person-body { width: 230px; }
+.tool-badge { background: var(--navy); box-shadow: 0 8px 18px rgba(0,0,0,.15); }
+.toolbox { background: #303f4c; }
+.visual-caption { padding: 16px 19px 18px; }
+.visual-caption strong { font-size: 16px; }
+.service-orbit { width: 58px; height: 58px; border-radius: 18px; border: 1px solid rgba(23,37,54,.08); }
+
+.section-heading { max-width: 720px; margin-bottom: 38px; }
+.eyebrow-dark { display: inline-flex; padding: 7px 10px; border-radius: 999px; background: rgba(232,137,45,.09); letter-spacing: .11em; }
+.section-heading h2 { font-weight: 850; text-wrap: balance; }
+.section-heading > p:last-child { max-width: 560px; }
+
+.problem-section { padding-top: 86px; }
+.problem-grid { gap: 14px; }
+.problem-card { position: relative; padding: 18px; border-radius: 20px; background: linear-gradient(145deg, #fbfaf7, #f4f1eb); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.problem-card:after { content: "→"; position: absolute; right: 16px; top: 16px; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--white); color: var(--navy); font-weight: 850; box-shadow: 0 5px 14px rgba(23,37,54,.08); }
+.problem-card:hover { transform: translateY(-4px); }
+.problem-card li { transition: transform .2s ease, border-color .2s ease, color .2s ease; }
+.problem-card li:hover { transform: translateX(3px); }
+
+.services-section { padding-top: 86px; }
+.services-grid { gap: 14px; }
+.service-card { position: relative; min-height: 250px; overflow: hidden; border-radius: 22px; background: radial-gradient(circle at 85% 18%, rgba(232,137,45,.12), transparent 25%), linear-gradient(145deg, #fbfaf7, #f1eee8); transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease; }
+.service-card:after { content: ""; position: absolute; width: 150px; height: 150px; right: -52px; bottom: -52px; border-radius: 50%; border: 1px solid rgba(23,37,54,.08); }
+.service-card:hover { transform: translateY(-6px); }
+.service-card-featured { background: radial-gradient(circle at 84% 18%, rgba(232,137,45,.3), transparent 26%), linear-gradient(145deg, #172536, #294158); }
+.service-icon { position: relative; z-index: 2; border: 1px solid rgba(23,37,54,.08); box-shadow: 0 8px 18px rgba(23,37,54,.08); }
+.service-card h3 { font-weight: 850; }
+.arrow { position: relative; z-index: 2; transition: transform .2s ease; }
+.service-card:hover .arrow { transform: rotate(8deg) scale(1.06); }
+.service-card { display: flex; flex-direction: column; justify-content: space-between; isolation: isolate; }
+.service-card:before { content: ""; position: absolute; z-index: -1; width: 210px; height: 210px; top: 42px; right: -66px; border-radius: 50%; background: rgba(23,37,54,.045); box-shadow: inset 0 0 0 1px rgba(23,37,54,.035); }
+.service-card-featured:before { background: rgba(255,255,255,.055); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+.service-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.service-icon { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 19px; background: rgba(255,255,255,.82); font-size: 28px; }
+.service-card-featured .service-icon { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.15); }
+.service-card .arrow { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--white); color: var(--navy); box-shadow: 0 7px 16px rgba(23,37,54,.08); font-size: 18px; }
+.service-card-featured .arrow { background: var(--accent); color: #fff; }
+.service-card > div:last-child { position: relative; z-index: 2; max-width: 92%; }
+.service-card h3 { margin-bottom: 7px; letter-spacing: -.02em; }
+.service-card p { margin: 0; line-height: 1.55; opacity: .72; }
+.service-card-featured h3, .service-card-featured p { color: #fff; }
+.service-card-featured p { opacity: .7; }
+.service-card:nth-child(2):before { transform: scale(.9); }
+.service-card:nth-child(3):before { transform: scale(1.08); }
+.service-card:nth-child(4):before { transform: scale(.82); }
+.service-card:nth-child(5):before { transform: scale(1.02); }
+
+.trust-section { position: relative; }
+.trust-grid { gap: 12px; }
+.trust-item { min-height: 74px; border-radius: 18px; box-shadow: 0 5px 18px rgba(23,37,54,.04); transition: transform .2s ease, box-shadow .2s ease; }
+.trust-item:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.trust-item strong { width: 32px; height: 32px; }
+.proof-note { border-radius: 0 12px 12px 0; }
+.process-step { position: relative; border-radius: 18px; background: #faf9f6; transition: transform .2s ease, box-shadow .2s ease; }
+.process-step:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.process-step > span { display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(232,137,45,.12); }
+.price-section { position: relative; background: radial-gradient(circle at 85% 10%, rgba(232,137,45,.16), transparent 24%), linear-gradient(135deg, #111d2a, #1d3043); }
+.price-preview { border-top-color: rgba(255,255,255,.2); }
+.price-preview div, .price-preview b { padding: 17px 0; }
+.price-preview div { gap: 5px; }
+.price-preview strong { font-size: 15px; }
+.price-preview b { min-width: 68px; padding-left: 12px; padding-right: 12px; border-radius: 999px; color: #fff; background: rgba(232,137,45,.16); text-align: center; }
+.experience-section { min-height: 300px; background: linear-gradient(180deg, #fff 0%, #f7f5f1 100%); }
+.experience-section .section-heading > p:last-child { padding: 20px; border: 1px dashed #d9dde0; border-radius: 18px; background: rgba(255,255,255,.7); }
+.site-footer { padding-top: 38px; border-top: 1px solid rgba(255,255,255,.08); }
+
+.hero { grid-template-columns: minmax(0, 1.02fr) minmax(320px, .98fr); align-items: center; gap: clamp(30px, 5vw, 72px); padding-left: clamp(22px, 6vw, 80px); padding-right: clamp(22px, 6vw, 80px); }
+.hero-copy { max-width: 720px; }
+.hero h1 { font-size: clamp(48px, 7vw, 82px); line-height: .9; letter-spacing: -.055em; }
+.hero-lead { font-size: 16px; }
+.hero-actions .btn { position: relative; overflow: hidden; min-width: 150px; }
+.hero-actions .btn-primary:after { content: ""; position: absolute; inset: 0; transform: translateX(-110%); background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent); transition: transform .55s ease; }
+.hero-actions .btn-primary:hover:after { transform: translateX(110%); }
+.hero-visual { min-height: 430px; }
+.technician-card { transform: rotate(1.2deg); transition: transform .35s ease, box-shadow .35s ease; }
+.technician-card:hover { transform: rotate(0deg) translateY(-5px); box-shadow: 0 30px 70px rgba(0,0,0,.25); }
+.visual-glow { animation: heroGlow 6s ease-in-out infinite; }
+.service-orbit { transition: transform .3s ease; }
+.orbit-one { animation: orbitFloatOne 5s ease-in-out infinite; }
+.orbit-two { animation: orbitFloatTwo 6s ease-in-out infinite; }
+.orbit-three { animation: orbitFloatThree 5.5s ease-in-out infinite; }
+@keyframes heroGlow { 0%,100% { transform: scale(1); opacity:.85; } 50% { transform: scale(1.07); opacity:1; } }
+@keyframes orbitFloatOne { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+@keyframes orbitFloatTwo { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+@keyframes orbitFloatThree { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+
+@media (min-width: 700px) {
+  .hero-trust { grid-template-columns: repeat(5, max-content); }
+  .problem-card { padding: 22px; }
+  .service-card { min-height: 270px; }
+}
+
+@media (min-width: 900px) {
+  .hero { padding-top: 76px; padding-bottom: 100px; }
+  .hero h1 { font-size: clamp(58px, 6vw, 92px); }
+  .hero-visual { min-height: 500px; }
+  .technician-card { width: min(100%, 430px); }
+  .technician-art { height: 350px; }
+  .problem-card:after { right: 20px; top: 20px; }
+  .service-card { min-height: 290px; padding: 30px; }
+  .service-icon { width: 68px; height: 68px; font-size: 30px; }
+}
+
+@media (max-width: 899px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-visual { min-height: 360px; }
+}
+
+@media (max-width: 699px) {
+  .hero { grid-template-columns: 1fr; gap: 22px; min-height: auto; padding: 42px 16px 64px; }
+  .hero:before { width: 185%; height: 48%; left: -45%; bottom: -18%; border-top-width: 7px; transform: rotate(-7deg); }
+  .hero h1 { font-size: clamp(42px, 13vw, 62px); line-height: .92; }
+  .hero .eyebrow { font-size: 10px; }
+  .hero-subtitle { margin-top: 18px; font-size: 11px; }
+  .hero-lead { font-size: 14px; line-height: 1.5; }
+  .hero-actions { display: grid; grid-template-columns: 1fr; gap: 9px; margin-top: 22px; }
+  .hero-actions .btn { width: 100%; min-height: 52px; }
+  .hero-trust { grid-template-columns: 1fr; gap: 7px; width: 100%; }
+  .hero-trust span { justify-content: flex-start; width: 100%; min-height: 40px; padding: 8px 11px; border-radius: 12px; text-align: left; }
+  .hero-trust span:last-child { grid-column: auto; }
+  .hero-trust b { font-size: 10px; }
+  .hero-visual { min-height: 305px; margin-top: 2px; }
+  .visual-glow { width: 270px; height: 270px; }
+  .technician-card { width: min(100%, 330px); transform: none; border-radius: 24px; }
+  .technician-art { height: 230px; }
+  .person-head { top: 42px; width: 78px; height: 90px; }
+  .person-head:before { width: 92px; height: 47px; }
+  .person-body { width: 175px; height: 145px; bottom: -55px; }
+  .tool-badge { top: 12px; left: 12px; font-size: 9px; }
+  .toolbox { right: 15px; bottom: 18px; width: 45px; height: 34px; font-size: 18px; }
+  .visual-caption { padding: 12px 15px 14px; }
+  .visual-caption strong { font-size: 14px; }
+  .visual-caption span { font-size: 10px; }
+  .service-orbit { width: 44px; height: 44px; border-radius: 14px; font-size: 20px; }
+  .orbit-one { left: 1%; top: 5%; }
+  .orbit-two { right: 1%; top: 23%; }
+  .orbit-three { left: 3%; bottom: 3%; }
+  .problem-section, .services-section { padding-top: 64px; }
+  .problem-grid, .services-grid, .trust-grid, .process-grid { grid-template-columns: 1fr; gap: 12px; }
+  .problem-card:after { width: 30px; height: 30px; right: 14px; top: 14px; }
+  .service-card { width: 100%; min-height: 0; aspect-ratio: auto; height: 190px; padding: 17px; }
+  .service-card h3 { font-size: 18px; }
+  .service-icon { width: 54px; height: 54px; border-radius: 17px; font-size: 25px; }
+  .service-card .arrow { width: 34px; height: 34px; font-size: 16px; }
+  .service-card:before { width: 160px; height: 160px; top: 54px; right: -55px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .visual-glow, .service-orbit { animation: none; }
+  .technician-card, .btn-primary:after { transition: none; }
+}
+
+/* =========================================================
+   HERO REFERENCE LAYOUT
+   Text left + real technician image right + white trust band below.
+   ========================================================= */
+.hero {
+  min-height: 720px !important;
+  padding-bottom: 205px !important;
+  grid-template-columns: minmax(0, 1fr) minmax(430px, 1.08fr) !important;
+  gap: clamp(20px, 3vw, 54px) !important;
+  align-items: center !important;
+}
+.hero::before {
+  width: 92% !important;
+  height: 118% !important;
+  left: 28% !important;
+  bottom: -48% !important;
+  border-top: 12px solid rgba(255,255,255,.97) !important;
+  border-radius: 50% !important;
+  transform: rotate(-16deg) !important;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.14), 0 0 28px rgba(255,255,255,.08) !important;
+}
+.hero > div[aria-hidden="true"] { display: none !important; }
+.hero-copy {
+  position: relative !important;
+  z-index: 4 !important;
+  max-width: 700px !important;
+  padding-top: 8px !important;
+}
+.hero-copy::before {
+  content: "ĐIỆN LẠNH NGUYỄN CƯỜNG";
+  display: inline-block;
+  padding: 9px 18px;
+  margin-bottom: 25px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 850;
+  letter-spacing: .01em;
+  transform: skewX(-8deg);
+}
+.hero-copy::before { box-shadow: 0 10px 24px rgba(232,137,45,.15); }
+.hero h1 {
+  max-width: 660px !important;
+  margin: 0 !important;
+  font-size: clamp(52px, 6vw, 88px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.045em !important;
+  color: transparent !important;
+}
+.hero h1::before,
+.hero h1::after {
+  display: block;
+  color: #fff;
+  font-weight: 850;
+  letter-spacing: -.045em;
+}
+.hero h1::before { content: "Sửa chữa điện lạnh"; }
+.hero h1::after { content: "Nhanh chóng – Uy tín"; margin-top: 8px; color: var(--accent); }
+.hero h1 span { display: none !important; }
+.hero-subtitle {
+  margin: 28px 0 0 !important;
+  max-width: 640px !important;
+  font-size: 0 !important;
+  line-height: 1.45 !important;
+  text-align: left !important;
+  color: rgba(255,255,255,.92) !important;
+}
+.hero-subtitle::before,
+.hero-subtitle::after { display: block; font-size: clamp(16px, 1.5vw, 20px); }
+.hero-subtitle::before { content: "Chuyên sửa chữa, bảo trì, lắp đặt các thiết bị điện lạnh"; }
+.hero-subtitle::after { content: "Tận tâm – Chất lượng – Giá cả hợp lý"; margin-top: 5px; }
+.hero-actions {
+  margin-top: 34px !important;
+  display: flex !important;
+  gap: 18px !important;
+  flex-wrap: wrap !important;
+}
+.hero-actions .btn { min-width: 218px !important; min-height: 60px !important; border-radius: 999px !important; font-size: 16px !important; font-weight: 800 !important; }
+.hero-actions .btn-primary { background: var(--accent) !important; }
+.hero-actions .btn-secondary { border: 2px solid rgba(255,255,255,.9) !important; background: transparent !important; color: #fff !important; }
+.hero-visual {
+  position: relative !important;
+  z-index: 2 !important;
+  min-height: 610px !important;
+  height: 610px !important;
+  margin-right: -8vw !important;
+  align-self: stretch !important;
+}
+.visual-glow,
+.service-orbit { display: none !important; }
+.technician-card {
+  position: absolute !important;
+  inset: -20px 0 -20px -18% !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  transform: none !important;
+  overflow: hidden !important;
+  clip-path: ellipse(82% 74% at 82% 48%) !important;
+}
+.technician-art {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: #dfe4e8 !important;
+}
+.technician-art img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  filter: saturate(.92) contrast(1.03) !important;
+}
+.technician-art > div:last-child { display: none !important; }
+.hero-trust {
+  position: absolute !important;
+  z-index: 6 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 38px clamp(22px, 6vw, 80px) 34px !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  background: #fff !important;
+  color: #111 !important;
+  box-shadow: 0 -1px 0 rgba(17,24,39,.06) !important;
+}
+.hero-trust span {
+  position: relative !important;
+  display: grid !important;
+  justify-items: center !important;
+  align-content: start !important;
+  gap: 8px !important;
+  min-height: 116px !important;
+  padding: 0 18px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #111 !important;
+  font-size: 16px !important;
+}
+.hero-trust span:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 0;
+  width: 1px;
+  height: 92px;
+  background: #e1e1e1;
+}
+.hero-trust span:hover { background: transparent !important; border-color: transparent !important; }
+.hero-trust .trust-icon {
+  width: 82px !important;
+  height: 68px !important;
+  margin: 0 auto 8px !important;
+  color: #0f6338 !important;
+}
+.hero-trust .trust-icon svg { width: 68px !important; height: 68px !important; stroke-width: 1.65 !important; }
+.hero-trust b {
+  display: block !important;
+  font-size: clamp(15px, 1.35vw, 20px) !important;
+  line-height: 1.3 !important;
+  font-weight: 600 !important;
+  color: #111 !important;
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+@media (min-width: 900px) {
+  .hero { padding-top: 58px !important; }
+}
+
+@media (max-width: 899px) {
+  .hero {
+    min-height: 780px !important;
+    padding: 46px 24px 205px !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+  .hero-copy { max-width: 720px !important; }
+  .hero-visual {
+    min-height: 430px !important;
+    height: 430px !important;
+    margin: 0 -8vw 0 0 !important;
+  }
+  .technician-card { inset: -10px -12% -10px -20% !important; clip-path: ellipse(86% 72% at 82% 50%) !important; }
+  .hero-trust { padding: 30px 20px 28px !important; }
+  .hero-trust span { min-height: 105px !important; padding: 0 10px !important; }
+  .hero-trust .trust-icon { width: 62px !important; height: 54px !important; }
+  .hero-trust .trust-icon svg { width: 54px !important; height: 54px !important; }
+  .hero-trust span:not(:last-child)::after { height: 78px; }
+}
+
+@media (max-width: 699px) {
+  .hero {
+    min-height: 930px !important;
+    padding: 36px 16px 218px !important;
+    gap: 10px !important;
+  }
+  .hero::before {
+    width: 150% !important;
+    height: 58% !important;
+    left: 35% !important;
+    bottom: 8% !important;
+    border-top-width: 8px !important;
+    transform: rotate(-20deg) !important;
+  }
+  .hero-copy::before { font-size: 11px; padding: 8px 14px; margin-bottom: 19px; }
+  .hero h1 { font-size: clamp(38px, 12.8vw, 58px) !important; line-height: .98 !important; }
+  .hero h1::after { margin-top: 5px; }
+  .hero-subtitle { margin-top: 21px !important; }
+  .hero-subtitle::before,
+  .hero-subtitle::after { font-size: 14px; }
+  .hero-actions { margin-top: 26px !important; display: grid !important; grid-template-columns: 1fr !important; gap: 10px !important; }
+  .hero-actions .btn { width: 100% !important; min-width: 0 !important; min-height: 54px !important; font-size: 14px !important; }
+  .hero-visual { min-height: 390px !important; height: 390px !important; margin: 0 -14vw 0 2vw !important; }
+  .technician-card { inset: -10px -18% -6px -35% !important; clip-path: ellipse(92% 69% at 83% 51%) !important; }
+  .hero-trust {
+    padding: 25px 8px 23px !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+  .hero-trust span { min-height: 104px !important; padding: 0 3px !important; gap: 6px !important; }
+  .hero-trust .trust-icon { width: 50px !important; height: 48px !important; margin-bottom: 5px !important; }
+  .hero-trust .trust-icon svg { width: 48px !important; height: 48px !important; }
+  .hero-trust b { font-size: 10px !important; line-height: 1.25 !important; }
+  .hero-trust span:not(:last-child)::after { height: 72px; }
+}
+
+/* =========================================================
    HERO FINAL TUNING — balanced desktop/mobile composition
    ========================================================= */
 .hero {
@@ -34,7 +461,6 @@
   line-height: .94 !important;
   letter-spacing: -.052em !important;
 }
-.hero h1::before { white-space: normal; }
 .hero h1::after {
   margin-top: 15px !important;
   font-size: clamp(38px, 3.9vw, 58px) !important;
@@ -69,9 +495,7 @@
   inset: -6px -7vw -6px -8% !important;
   clip-path: ellipse(87% 84% at 86% 50%) !important;
 }
-.technician-art img {
-  object-position: 54% center !important;
-}
+.technician-art img { object-position: 54% center !important; }
 .hero-trust {
   position: relative !important;
   z-index: 8 !important;
@@ -85,25 +509,11 @@
   background: #fff !important;
   box-shadow: 0 1px 0 rgba(17,24,39,.06), 0 8px 24px rgba(17,24,39,.04) !important;
 }
-.hero-trust span {
-  min-height: 86px !important;
-}
-.hero-trust span:not(:last-child)::after {
-  top: 0 !important;
-  height: 82px !important;
-}
-.hero-trust .trust-icon {
-  width: 48px !important;
-  height: 48px !important;
-  margin-bottom: 7px !important;
-}
-.hero-trust .trust-icon svg {
-  width: 46px !important;
-  height: 46px !important;
-}
-.hero-trust b {
-  font-size: clamp(12px, 1.1vw, 15px) !important;
-}
+.hero-trust span { min-height: 86px !important; }
+.hero-trust span:not(:last-child)::after { top: 0 !important; height: 82px !important; }
+.hero-trust .trust-icon { width: 48px !important; height: 48px !important; margin-bottom: 7px !important; }
+.hero-trust .trust-icon svg { width: 46px !important; height: 46px !important; }
+.hero-trust b { font-size: clamp(12px, 1.1vw, 15px) !important; }
 
 @media (max-width: 899px) {
   .hero {
@@ -112,32 +522,20 @@
     grid-template-columns: 1fr !important;
     gap: 0 !important;
   }
-  .hero-copy {
-    max-width: 680px !important;
-    padding-bottom: 28px !important;
-  }
-  .hero h1 {
-    font-size: clamp(48px, 8vw, 68px) !important;
-  }
-  .hero h1::after {
-    font-size: clamp(34px, 5vw, 48px) !important;
-  }
+  .hero-copy { max-width: 680px !important; padding-bottom: 28px !important; }
+  .hero h1 { font-size: clamp(48px, 8vw, 68px) !important; }
+  .hero h1::after { font-size: clamp(34px, 5vw, 48px) !important; }
   .hero-visual {
     min-height: 340px !important;
     height: 340px !important;
     width: calc(100% + 24px) !important;
     margin: 0 -12px !important;
   }
-  .technician-card {
-    inset: 0 -10% 0 -8% !important;
-    clip-path: ellipse(92% 84% at 82% 50%) !important;
-  }
+  .technician-card { inset: 0 -10% 0 -8% !important; clip-path: ellipse(92% 84% at 82% 50%) !important; }
 }
 
 @media (max-width: 699px) {
-  .hero {
-    padding: 30px 16px 0 !important;
-  }
+  .hero { padding: 30px 16px 0 !important; }
   .hero::before {
     width: 120% !important;
     height: 46% !important;
@@ -146,81 +544,21 @@
     border-top-width: 6px !important;
     transform: rotate(-18deg) !important;
   }
-  .hero-copy {
-    padding-bottom: 22px !important;
-  }
-  .hero-copy::before {
-    padding: 7px 12px !important;
-    margin-bottom: 18px !important;
-    font-size: 9px !important;
-  }
-  .hero h1 {
-    max-width: 330px !important;
-    font-size: clamp(40px, 11.5vw, 52px) !important;
-    line-height: .95 !important;
-  }
-  .hero h1::after {
-    margin-top: 11px !important;
-    font-size: clamp(30px, 8.7vw, 40px) !important;
-    line-height: .92 !important;
-  }
-  .hero-subtitle {
-    margin-top: 19px !important;
-    max-width: 340px !important;
-  }
-  .hero-subtitle::before,
-  .hero-subtitle::after {
-    font-size: 12px !important;
-    line-height: 1.42 !important;
-  }
-  .hero-actions {
-    margin-top: 20px !important;
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 8px !important;
-  }
-  .hero-actions .btn {
-    width: 100% !important;
-    min-width: 0 !important;
-    min-height: 48px !important;
-    padding: 0 10px !important;
-    font-size: 12px !important;
-  }
-  .hero-visual {
-    min-height: 255px !important;
-    height: 255px !important;
-    width: calc(100% + 32px) !important;
-    margin: 0 -16px !important;
-  }
-  .technician-card {
-    inset: 0 -14% 0 -10% !important;
-    clip-path: ellipse(95% 88% at 84% 50%) !important;
-  }
-  .technician-art img {
-    object-position: 58% center !important;
-  }
-  .hero-trust {
-    padding: 19px 5px 17px !important;
-  }
-  .hero-trust span {
-    min-height: 76px !important;
-    padding: 0 3px !important;
-    gap: 5px !important;
-  }
-  .hero-trust span:not(:last-child)::after {
-    height: 65px !important;
-  }
-  .hero-trust .trust-icon {
-    width: 38px !important;
-    height: 38px !important;
-    margin-bottom: 4px !important;
-  }
-  .hero-trust .trust-icon svg {
-    width: 36px !important;
-    height: 36px !important;
-  }
-  .hero-trust b {
-    font-size: 9px !important;
-    line-height: 1.22 !important;
-  }
+  .hero-copy { padding-bottom: 22px !important; }
+  .hero-copy::before { padding: 7px 12px !important; margin-bottom: 18px !important; font-size: 9px !important; }
+  .hero h1 { max-width: 330px !important; font-size: clamp(40px, 11.5vw, 52px) !important; line-height: .95 !important; }
+  .hero h1::after { margin-top: 11px !important; font-size: clamp(30px, 8.7vw, 40px) !important; line-height: .92 !important; }
+  .hero-subtitle { margin-top: 19px !important; max-width: 340px !important; }
+  .hero-subtitle::before, .hero-subtitle::after { font-size: 12px !important; line-height: 1.42 !important; }
+  .hero-actions { margin-top: 20px !important; display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+  .hero-actions .btn { width: 100% !important; min-width: 0 !important; min-height: 48px !important; padding: 0 10px !important; font-size: 12px !important; }
+  .hero-visual { min-height: 255px !important; height: 255px !important; width: calc(100% + 32px) !important; margin: 0 -16px !important; }
+  .technician-card { inset: 0 -14% 0 -10% !important; clip-path: ellipse(95% 88% at 84% 50%) !important; }
+  .technician-art img { object-position: 58% center !important; }
+  .hero-trust { padding: 19px 5px 17px !important; }
+  .hero-trust span { min-height: 76px !important; padding: 0 3px !important; gap: 5px !important; }
+  .hero-trust span:not(:last-child)::after { height: 65px !important; }
+  .hero-trust .trust-icon { width: 38px !important; height: 38px !important; margin-bottom: 4px !important; }
+  .hero-trust .trust-icon svg { width: 36px !important; height: 36px !important; }
+  .hero-trust b { font-size: 9px !important; line-height: 1.22 !important; }
 }
