@@ -1,0 +1,17 @@
+/* Compact service cards inspired by the reference layout */
+@media (max-width: 699px) {
+  .services-section { padding: 48px 14px 64px; }
+  .section-heading { margin-bottom: 22px; }
+  .section-heading > p:last-child { display: none; }
+  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .service-card {
+    aspect-ratio: 1 / .88;
+    min-height: 0;
+    padding: 11px;
+    border-radius: 14px;
+  }
+  .service-icon { width: 40px; height: 40px; border-radius: 11px; font-size: 19px; }
+  .arrow { width: 28px; height: 28px; font-size: 15px; }
+  .service-card h3 { margin: 9px 0 2px; font-size: 16px; }
+  .service-card p { font-size: 10px; line-height: 1.25; }
+}
