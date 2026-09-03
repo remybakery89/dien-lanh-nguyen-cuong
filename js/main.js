@@ -1,6 +1,6 @@
 const redesignStylesheet = document.createElement('link');
 redesignStylesheet.rel = 'stylesheet';
-redesignStylesheet.href = 'css/homepage-redesign-v1.css?v=4';
+redesignStylesheet.href = 'css/homepage-redesign-v1.css?v=5';
 document.head.appendChild(redesignStylesheet);
 
 const menu = document.querySelector('#main-menu');
@@ -76,6 +76,7 @@ if (heroVisual) {
 const heroTrust = document.querySelector('.hero-trust');
 if (heroTrust && hero) {
   hero.insertAdjacentElement('afterend', heroTrust);
+  heroTrust.classList.add('reference-trust');
 }
 
 if (heroTrust) {
@@ -88,7 +89,7 @@ if (heroTrust) {
     '<svg viewBox="0 0 80 80" aria-hidden="true"><path d="M40 7 67 17v18c0 18-11 30-27 38C24 65 13 53 13 35V17L40 7Z"/><path d="m25 39 9 9 21-23"/></svg>',
     '<svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="28"/><circle cx="30" cy="34" r="2.8"/><circle cx="50" cy="34" r="2.8"/><path d="M27 47c4.1 6 8.5 9 13 9s8.9-3 13-9"/></svg>'
   ];
-  const trustLabels = ['Có mặt<br>Nh nhanh chóng'.replace('Nh nhanh','Nhanh'), 'Giá cả<br>Minh bạch', 'Bảo hành<br>dịch vụ', 'Khách hàng<br>Hài lòng'];
+  const trustLabels = ['Có mặt<br>Nhanh chóng', 'Giá cả<br>Minh bạch', 'Bảo hành<br>dịch vụ', 'Khách hàng<br>Hài lòng'];
 
   heroTrust.style.display = 'grid';
   heroTrust.style.gridTemplateColumns = 'repeat(4, minmax(0, 1fr))';
