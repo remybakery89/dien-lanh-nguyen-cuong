@@ -85,6 +85,12 @@ document.querySelectorAll('.problem-icon, .service-icon, .menu-service-icon').fo
   }
 });
 
+// Hero subtitle: centered beneath the headline.
+const heroSubtitle = document.querySelector('.hero-subtitle');
+if (heroSubtitle) {
+  heroSubtitle.style.textAlign = 'center';
+}
+
 // Hero trust row: four visual proof points, informational rather than button-like.
 const heroTrust = document.querySelector('.hero-trust');
 if (heroTrust) {
@@ -96,6 +102,12 @@ if (heroTrust) {
     '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M9 14h30v25H9z"/><path d="M14 14V8h20v6M16 23h16M16 30h10"/><circle cx="34" cy="31" r="3"/></svg>',
     '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5 40 11v10c0 10-6.4 17.2-16 22-9.6-4.8-16-12-16-22V11l16-6Z"/><path d="m15 24 6 6 12-13"/></svg>',
     '<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18"/><path d="M16.5 28c2.4 4 4.9 6 7.5 6s5.1-2 7.5-6"/><path d="M17 19h.01M31 19h.01"/></svg>'
+  ];
+  const trustLabels = [
+    'Có mặt<br>nhanh chóng',
+    'Giá cả<br>minh bạch',
+    'Bảo hành<br>dịch vụ',
+    'Khách hàng<br>hài lòng'
   ];
 
   heroTrust.style.display = 'grid';
@@ -120,6 +132,7 @@ if (heroTrust) {
       icon.style.color = '#72c784';
     }
     if (label) {
+      label.innerHTML = trustLabels[index];
       label.style.display = 'block';
       label.style.fontSize = '11px';
       label.style.fontWeight = '650';
