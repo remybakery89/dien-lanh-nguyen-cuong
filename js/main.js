@@ -5,6 +5,7 @@ document.head.appendChild(redesignStylesheet);
 
 const PHONE = '0367309659';
 const ZALO = 'https://zalo.me/0367309659';
+const EMAIL = 'dienlanhnguyencuong79@gmail.com';
 
 const menu = document.querySelector('#main-menu');
 const menuToggle = document.querySelector('.menu-toggle');
@@ -110,31 +111,11 @@ if (heroTrust) {
 
 /* Dịch vụ: ảnh thật từ các nguồn ảnh thực tế, chọn hình đúng thiết bị/thao tác nhất có thể. */
 const serviceVisuals = [
-  {
-    title: 'Sửa máy lạnh',
-    detail: 'Không lạnh • Chảy nước • Kêu to • Hư board',
-    image: 'https://images.pexels.com/photos/5463580/pexels-photo-5463580.jpeg?auto=compress&cs=tinysrgb&w=900'
-  },
-  {
-    title: 'Sửa máy giặt',
-    detail: 'Không vắt • Không xả • Báo lỗi • Hư board',
-    image: 'https://images.pexels.com/photos/34734504/pexels-photo-34734504.jpeg?auto=compress&cs=tinysrgb&w=900'
-  },
-  {
-    title: 'Sửa tủ lạnh',
-    detail: 'Không lạnh • Không đông đá • Chảy nước',
-    image: 'https://images.pexels.com/photos/5591927/pexels-photo-5591927.jpeg?auto=compress&cs=tinysrgb&w=900'
-  },
-  {
-    title: 'Sửa máy nước nóng',
-    detail: 'Không nóng • Rò điện • Không lên nguồn',
-    image: 'https://images.pexels.com/photos/34938439/pexels-photo-34938439.jpeg?auto=compress&cs=tinysrgb&w=900'
-  },
-  {
-    title: 'Sửa lò vi sóng',
-    detail: 'Không nóng • Mất nguồn • Liệt phím',
-    image: 'https://images.pexels.com/photos/35290689/pexels-photo-35290689.jpeg?auto=compress&cs=tinysrgb&w=900'
-  }
+  { title: 'Sửa máy lạnh', detail: 'Không lạnh • Chảy nước • Kêu to • Hư board', image: 'https://images.pexels.com/photos/5463580/pexels-photo-5463580.jpeg?auto=compress&cs=tinysrgb&w=900' },
+  { title: 'Sửa máy giặt', detail: 'Không vắt • Không xả • Báo lỗi • Hư board', image: 'https://images.pexels.com/photos/34734504/pexels-photo-34734504.jpeg?auto=compress&cs=tinysrgb&w=900' },
+  { title: 'Sửa tủ lạnh', detail: 'Không lạnh • Không đông đá • Chảy nước', image: 'https://images.pexels.com/photos/5591927/pexels-photo-5591927.jpeg?auto=compress&cs=tinysrgb&w=900' },
+  { title: 'Sửa máy nước nóng', detail: 'Không nóng • Rò điện • Không lên nguồn', image: 'https://images.pexels.com/photos/34938439/pexels-photo-34938439.jpeg?auto=compress&cs=tinysrgb&w=900' },
+  { title: 'Sửa lò vi sóng', detail: 'Không nóng • Mất nguồn • Liệt phím', image: 'https://images.pexels.com/photos/35290689/pexels-photo-35290689.jpeg?auto=compress&cs=tinysrgb&w=900' }
 ];
 
 const servicesGrid = document.querySelector('.services-grid');
@@ -150,13 +131,7 @@ serviceCards.forEach((card, index) => {
   card.style.border = '0';
   card.style.background = '#172536';
   card.style.color = '#fff';
-  card.innerHTML = `
-    <span class="service-card-photo" aria-hidden="true"></span>
-    <span class="service-card-shade" aria-hidden="true"></span>
-    <span class="service-card-content">
-      <span class="service-card-top"><span class="service-icon modern-icon">${icons[['❄️','🌀','🧊','🔥','🍲'][index]] || ''}</span><span class="arrow">↗</span></span>
-      <span class="service-card-copy"><h3>${data.title}</h3><p>${data.detail}</p></span>
-    </span>`;
+  card.innerHTML = `<span class="service-card-photo" aria-hidden="true"></span><span class="service-card-shade" aria-hidden="true"></span><span class="service-card-content"><span class="service-card-top"><span class="service-icon modern-icon">${icons[['❄️','🌀','🧊','🔥','🍲'][index]] || ''}</span><span class="arrow">↗</span></span><span class="service-card-copy"><h3>${data.title}</h3><p>${data.detail}</p></span></span>`;
   const photo = card.querySelector('.service-card-photo');
   const shade = card.querySelector('.service-card-shade');
   const content = card.querySelector('.service-card-content');
@@ -195,58 +170,18 @@ window.addEventListener('resize', applyServiceMobileLayout);
 /* Giá: không bịa số tiền khi chưa có bảng giá chính thức. */
 const priceSection = document.querySelector('.price-section');
 if (priceSection) {
-  priceSection.innerHTML = `
-    <div class="section-heading">
-      <p class="eyebrow-dark">MINH BẠCH CHI PHÍ</p>
-      <h2 id="price-title">Bảng giá <span>tham khảo</span></h2>
-      <p>Không có một mức giá chung cho mọi ca sửa. Kỹ thuật viên kiểm tra tình trạng thực tế và báo giá trước khi làm.</p>
-    </div>
-    <div class="price-preview v1-price-table" role="table" aria-label="Các hạng mục dịch vụ cần báo giá">
-      <div class="price-row"><strong>Máy lạnh</strong><span>Kiểm tra, vệ sinh, sửa chữa, bơm gas, xử lý chảy nước</span><b>Liên hệ</b></div>
-      <div class="price-row"><strong>Máy giặt</strong><span>Kiểm tra lỗi nguồn, xả, vắt, board và linh kiện</span><b>Liên hệ</b></div>
-      <div class="price-row"><strong>Tủ lạnh</strong><span>Kiểm tra lạnh, đông đá, chảy nước, block, board</span><b>Liên hệ</b></div>
-      <div class="price-row"><strong>Máy nước nóng</strong><span>Kiểm tra nguồn điện, gia nhiệt và các lỗi an toàn</span><b>Liên hệ</b></div>
-      <div class="price-row"><strong>Lò vi sóng</strong><span>Kiểm tra nguồn, gia nhiệt, bàn phím và mạch</span><b>Liên hệ</b></div>
-    </div>
-    <p class="price-disclaimer"><strong>Nguyên tắc:</strong> kiểm tra trước – báo giá trước – khách đồng ý mới sửa. Chi phí thay đổi theo tình trạng và linh kiện thực tế.</p>`;
+  priceSection.innerHTML = `<div class="section-heading"><p class="eyebrow-dark">MINH BẠCH CHI PHÍ</p><h2 id="price-title">Bảng giá <span>tham khảo</span></h2><p>Không có một mức giá chung cho mọi ca sửa. Kỹ thuật viên kiểm tra tình trạng thực tế và báo giá trước khi làm.</p></div><div class="price-preview v1-price-table" role="table" aria-label="Các hạng mục dịch vụ cần báo giá"><div class="price-row"><strong>Máy lạnh</strong><span>Kiểm tra, vệ sinh, sửa chữa, bơm gas, xử lý chảy nước</span><b>Liên hệ</b></div><div class="price-row"><strong>Máy giặt</strong><span>Kiểm tra lỗi nguồn, xả, vắt, board và linh kiện</span><b>Liên hệ</b></div><div class="price-row"><strong>Tủ lạnh</strong><span>Kiểm tra lạnh, đông đá, chảy nước, block, board</span><b>Liên hệ</b></div><div class="price-row"><strong>Máy nước nóng</strong><span>Kiểm tra nguồn điện, gia nhiệt và các lỗi an toàn</span><b>Liên hệ</b></div><div class="price-row"><strong>Lò vi sóng</strong><span>Kiểm tra nguồn, gia nhiệt, bàn phím và mạch</span><b>Liên hệ</b></div></div><p class="price-disclaimer"><strong>Nguyên tắc:</strong> kiểm tra trước – báo giá trước – khách đồng ý mới sửa. Chi phí thay đổi theo tình trạng và linh kiện thực tế.</p>`;
 }
 
 /* Kinh nghiệm: nội dung thật của website cũ + nội dung hữu ích theo nhóm lỗi. */
 const experienceSection = document.querySelector('.experience-section');
 if (experienceSection) {
-  experienceSection.innerHTML = `
-    <div class="section-heading">
-      <p class="eyebrow-dark">KINH NGHIỆM SỬ DỤNG</p>
-      <h2 id="experience-title">Biết đúng cách, <span>đỡ tốn tiền</span></h2>
-      <p>Một vài kiến thức đơn giản giúp bạn dùng thiết bị an toàn hơn, nhận biết sự cố sớm và biết khi nào nên gọi thợ.</p>
-    </div>
-    <div class="experience-grid v1-experience-grid">
-      <article class="experience-card"><span>01</span><h3>Thời gian hâm nóng các loại thức ăn trong lò vi sóng?</h3><p>Gợi ý thời gian hâm nóng theo từng loại thức ăn để sử dụng lò vi sóng đúng cách và hạn chế tình trạng thức ăn quá nóng hoặc không chín đều.</p></article>
-      <article class="experience-card"><span>02</span><h3>Cách vệ sinh máy lạnh tại nhà từ A–Z</h3><p>Những bước vệ sinh cơ bản, dấu hiệu máy lạnh cần được kiểm tra và cách chủ động bảo dưỡng để máy hoạt động ổn định hơn.</p></article>
-      <article class="experience-card"><span>03</span><h3>Máy lạnh không lạnh, máy giặt không vắt: đừng cố chạy tiếp</h3><p>Khi thiết bị có tiếng động lạ, mùi khét, rò nước hoặc lỗi lặp lại, nên dừng sử dụng và kiểm tra nguyên nhân thay vì cố vận hành.</p></article>
-    </div>`;
+  experienceSection.innerHTML = `<div class="section-heading"><p class="eyebrow-dark">KINH NGHIỆM SỬ DỤNG</p><h2 id="experience-title">Biết đúng cách, <span>đỡ tốn tiền</span></h2><p>Một vài kiến thức đơn giản giúp bạn dùng thiết bị an toàn hơn, nhận biết sự cố sớm và biết khi nào nên gọi thợ.</p></div><div class="experience-grid v1-experience-grid"><article class="experience-card"><span>01</span><h3>Thời gian hâm nóng các loại thức ăn trong lò vi sóng?</h3><p>Gợi ý thời gian hâm nóng theo từng loại thức ăn để sử dụng lò vi sóng đúng cách và hạn chế tình trạng thức ăn quá nóng hoặc không chín đều.</p></article><article class="experience-card"><span>02</span><h3>Cách vệ sinh máy lạnh tại nhà từ A–Z</h3><p>Những bước vệ sinh cơ bản, dấu hiệu máy lạnh cần được kiểm tra và cách chủ động bảo dưỡng để máy hoạt động ổn định hơn.</p></article><article class="experience-card"><span>03</span><h3>Máy lạnh không lạnh, máy giặt không vắt: đừng cố chạy tiếp</h3><p>Khi thiết bị có tiếng động lạ, mùi khét, rò nước hoặc lỗi lặp lại, nên dừng sử dụng và kiểm tra nguyên nhân thay vì cố vận hành.</p></article></div>`;
 }
 
-/* Footer: thông tin thật từ website Nguyễn Cường. */
 const footer = document.querySelector('.site-footer');
 if (footer) {
-  footer.innerHTML = `
-    <div class="footer-main">
-      <div class="footer-brand">
-        <strong>ĐIỆN LẠNH NGUYỄN CƯỜNG</strong>
-        <p>Sửa chữa điện lạnh tại nhà · TP.HCM</p>
-        <p>76/41/5 Tôn Thất Thuyết, Phường 16, Quận 4, Hồ Chí Minh</p>
-      </div>
-      <div class="footer-links">
-        <a href="#home">Trang chủ</a><a href="#dich-vu">Dịch vụ</a><a href="#van-de">Tình trạng thường gặp</a><a href="#bang-gia">Bảng giá</a><a href="#kinh-nghiem">Kinh nghiệm</a>
-      </div>
-      <div class="footer-contact">
-        <a href="tel:${PHONE}">☎ ${PHONE}</a>
-        <a href="${ZALO}" target="_blank" rel="noopener">Zalo: ${PHONE}</a>
-        <a href="mailto:dienlanhnguyencuong79@gmail.com">dienlanhnguyencuong79@gmail.com</a>
-      </div>
-    </div>
-    <div class="footer-bottom"><span>© 2026 Điện Lạnh Nguyễn Cường</span><span>Sửa chữa · Bảo trì · Lắp đặt điện lạnh tại TP.HCM</span></div>`;
+  footer.innerHTML = `<div class="footer-main"><div class="footer-brand"><strong>ĐIỆN LẠNH NGUYỄN CƯỜNG</strong><p>Sửa chữa điện lạnh tại nhà · TP.HCM</p><p>76/41/5 Tôn Thất Thuyết, Phường 16, Quận 4, Hồ Chí Minh</p></div><div class="footer-links"><a href="#home">Trang chủ</a><a href="#dich-vu">Dịch vụ</a><a href="#van-de">Tình trạng thường gặp</a><a href="#bang-gia">Bảng giá</a><a href="#kinh-nghiem">Kinh nghiệm</a></div><div class="footer-contact"><a href="tel:${PHONE}">☎ ${PHONE}</a><a href="${ZALO}" target="_blank" rel="noopener">Zalo: ${PHONE}</a><a href="mailto:${EMAIL}">${EMAIL}</a></div></div><div class="footer-bottom"><span>© 2026 Điện Lạnh Nguyễn Cường</span><span>Sửa chữa · Bảo trì · Lắp đặt điện lạnh tại TP.HCM</span></div>`;
 }
 
 const floating = document.querySelector('.floating-actions');
@@ -259,21 +194,15 @@ if (floating) {
   if (messenger) messenger.href = '#lien-he';
 }
 
-/* SEO: LocalBusiness schema giúp Google hiểu tên, số điện thoại, địa chỉ và nhóm dịch vụ. */
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Điện Lạnh Nguyễn Cường',
   url: 'https://dienlanhnguyencuong.com/',
   telephone: '+84367309659',
-  email: 'dienlanhnguyenccuong79@gmail.com',
+  email: EMAIL,
   description: 'Sửa chữa, bảo trì và lắp đặt máy lạnh, máy giặt, tủ lạnh, máy nước nóng và lò vi sóng tại TP.HCM.',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '76/41/5 Tôn Thất Thuyết, Phường 16, Quận 4',
-    addressLocality: 'Hồ Chí Minh',
-    addressCountry: 'VN'
-  },
+  address: { '@type': 'PostalAddress', streetAddress: '76/41/5 Tôn Thất Thuyết, Phường 16, Quận 4', addressLocality: 'Hồ Chí Minh', addressCountry: 'VN' },
   areaServed: 'TP. Hồ Chí Minh',
   serviceType: ['Sửa máy lạnh', 'Sửa máy giặt', 'Sửa tủ lạnh', 'Sửa máy nước nóng', 'Sửa lò vi sóng']
 };
@@ -282,7 +211,6 @@ ld.type = 'application/ld+json';
 ld.textContent = JSON.stringify(structuredData);
 document.head.appendChild(ld);
 
-/* Scroll reveal — giữ cơ chế đã ổn định. */
 const problemSection = document.querySelector('.problem-section');
 if (problemSection) {
   const heading = problemSection.querySelector('.section-heading');
