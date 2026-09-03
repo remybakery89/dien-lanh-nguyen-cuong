@@ -23,20 +23,50 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') setMenu(false);
 });
 
-// Hero background: keep the navy tone, but replace the flat fill with restrained light trails and glows.
+// Hero background: dark navy base with soft curved light trails instead of a flat gradient.
 const hero = document.querySelector('.hero');
 if (hero) {
-  hero.style.backgroundColor = '#0d1723';
-  hero.style.backgroundImage = [
-    'radial-gradient(circle at 78% 20%, rgba(232,137,45,.16), transparent 24%)',
-    'radial-gradient(circle at 22% 82%, rgba(83,139,177,.13), transparent 28%)',
-    'linear-gradient(116deg, transparent 0%, transparent 37.5%, rgba(255,255,255,.045) 37.7%, transparent 37.95%)',
-    'linear-gradient(116deg, transparent 0%, transparent 58%, rgba(232,137,45,.11) 58.2%, transparent 58.5%)',
-    'linear-gradient(116deg, transparent 0%, transparent 72%, rgba(111,167,201,.08) 72.2%, transparent 72.45%)',
-    'linear-gradient(135deg, #0d1723 0%, #132436 52%, #102030 100%)'
-  ].join(', ');
-  hero.style.backgroundSize = 'auto, auto, 100% 100%, 100% 100%, 100% 100%, 100% 100%';
-  hero.style.backgroundPosition = 'center, center, center, center, center, center';
+  hero.style.background = '#0d1723';
+  hero.style.overflow = 'hidden';
+  hero.style.isolation = 'isolate';
+
+  const heroLines = document.createElement('div');
+  heroLines.setAttribute('aria-hidden', 'true');
+  heroLines.style.position = 'absolute';
+  heroLines.style.inset = '0';
+  heroLines.style.zIndex = '0';
+  heroLines.style.pointerEvents = 'none';
+  heroLines.style.overflow = 'hidden';
+  heroLines.innerHTML = `
+    <svg viewBox="0 0 1200 720" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;">
+      <defs>
+        <linearGradient id="heroTrailBlue" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#78b0d0" stop-opacity="0"/>
+          <stop offset=".30" stop-color="#78b0d0" stop-opacity=".18"/>
+          <stop offset=".62" stop-color="#9bc8dc" stop-opacity=".10"/>
+          <stop offset="1" stop-color="#9bc8dc" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="heroTrailOrange" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#e8892d" stop-opacity="0"/>
+          <stop offset=".46" stop-color="#e8892d" stop-opacity=".18"/>
+          <stop offset=".78" stop-color="#f0a04f" stop-opacity=".07"/>
+          <stop offset="1" stop-color="#e8892d" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="heroTrailGlow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="6"/>
+        </filter>
+      </defs>
+      <path d="M-140 545 C120 300 300 675 565 430 S900 120 1340 315" fill="none" stroke="url(#heroTrailBlue)" stroke-width="2"/>
+      <path d="M-120 548 C145 305 305 700 575 440 S910 135 1340 325" fill="none" stroke="url(#heroTrailBlue)" stroke-width="10" opacity=".13" filter="url(#heroTrailGlow)"/>
+      <path d="M-120 230 C165 455 355 80 625 275 S970 540 1340 205" fill="none" stroke="url(#heroTrailOrange)" stroke-width="1.5"/>
+      <path d="M-80 650 C190 485 390 590 610 470 S990 270 1300 380" fill="none" stroke="rgba(255,255,255,.045)" stroke-width="1"/>
+    </svg>`;
+  hero.insertBefore(heroLines, hero.firstChild);
+
+  hero.querySelectorAll(':scope > *:not(div[aria-hidden="true"])').forEach((element) => {
+    if (element !== heroLines) element.style.position = element.style.position || 'relative';
+    if (element !== heroLines) element.style.zIndex = element.style.zIndex || '1';
+  });
 }
 
 const icons = {
