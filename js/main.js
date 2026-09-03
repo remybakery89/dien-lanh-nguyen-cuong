@@ -34,3 +34,30 @@ document.querySelectorAll('.problem-icon, .service-icon, .menu-service-icon').fo
     element.classList.add('modern-icon');
   }
 });
+
+// Scroll reveal: subtle, quick and only runs once per element.
+const problemSection = document.querySelector('.problem-section');
+if (problemSection) {
+  const heading = problemSection.querySelector('.section-heading');
+  if (heading) heading.classList.add('reveal-up');
+
+  problemSection.querySelectorAll('.problem-card').forEach((card, index) => {
+    card.classList.add(index % 2 === 0 ? 'reveal-left' : 'reveal-right');
+    card.style.setProperty('--reveal-delay', `${Math.min(index * 90, 360)}ms`);
+  });
+}
+
+const revealTargets = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+if ('IntersectionObserver' in window && revealTargets.length) {
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      obs.unobserve(entry.target);
+    });
+  }, { threshold: 0.14, rootMargin: '0px 0px -7% 0px' });
+
+  revealTargets.forEach((element) => observer.observe(element));
+} else {
+  revealTargets.forEach((element) => element.classList.add('is-visible'));
+}
