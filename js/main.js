@@ -1,6 +1,6 @@
 const redesignStylesheet = document.createElement('link');
 redesignStylesheet.rel = 'stylesheet';
-redesignStylesheet.href = 'css/homepage-redesign-v1.css?v=2';
+redesignStylesheet.href = 'css/homepage-redesign-v1.css?v=3';
 document.head.appendChild(redesignStylesheet);
 
 const menu = document.querySelector('#main-menu');
@@ -23,7 +23,6 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') setMenu(false);
 });
 
-// Hero background: keep the dark navy base and let the stylesheet draw the single white divider.
 const hero = document.querySelector('.hero');
 if (hero) {
   hero.style.background = '#0d1723';
@@ -47,7 +46,6 @@ document.querySelectorAll('.problem-icon, .service-icon, .menu-service-icon').fo
   }
 });
 
-// The trust band belongs below the complete hero, not inside the hero copy.
 const heroTrust = document.querySelector('.hero-trust');
 if (heroTrust && hero) {
   hero.insertAdjacentElement('afterend', heroTrust);
@@ -56,7 +54,6 @@ if (heroTrust && hero) {
 const heroSubtitle = document.querySelector('.hero-subtitle');
 if (heroSubtitle) heroSubtitle.style.textAlign = 'left';
 
-// Hero trust row: exactly four visual proof points, informational rather than button-like.
 if (heroTrust) {
   const trustItems = [...heroTrust.querySelectorAll(':scope > span')];
   if (trustItems[1]) trustItems[1].remove();
@@ -67,13 +64,7 @@ if (heroTrust) {
     '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5 40 11v10c0 10-6.4 17.2-16 22-9.6-4.8-16-12-16-22V11l16-6Z"/><path d="m15 24 6 6 12-13"/></svg>',
     '<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18"/><path d="M16.5 28c2.4 4 4.9 6 7.5 6s5.1-2 7.5-6"/><path d="M17 19h.01M31 19h.01"/></svg>'
   ];
-  const trustLabels = [
-    'Có mặt<br>nhanh chóng',
-    'Giá cả<br>minh bạch',
-    'Bảo hành<br>dịch vụ',
-    'Khách hàng<br>hài lòng'
-  ];
-
+  const trustLabels = ['Có mặt<br>nhanh chóng','Giá cả<br>minh bạch','Bảo hành<br>dịch vụ','Khách hàng<br>hài lòng'];
   heroTrust.style.display = 'grid';
   heroTrust.style.gridTemplateColumns = 'repeat(4, minmax(0, 1fr))';
   heroTrust.style.gap = '0';
@@ -131,7 +122,6 @@ if (heroTrust) {
   window.addEventListener('resize', mobileTrustLayout);
 }
 
-// Mobile layout: service cards are always one column, never a 2-column grid.
 const servicesGrid = document.querySelector('.services-grid');
 const serviceCards = servicesGrid ? [...servicesGrid.querySelectorAll('.service-card')] : [];
 function applyServiceMobileLayout() {
@@ -147,12 +137,10 @@ function applyServiceMobileLayout() {
 applyServiceMobileLayout();
 window.addEventListener('resize', applyServiceMobileLayout);
 
-// Scroll reveal — preserved from the working checkpoint and extended to services.
 const problemSection = document.querySelector('.problem-section');
 if (problemSection) {
   const heading = problemSection.querySelector('.section-heading');
   if (heading) heading.classList.add('reveal-up');
-
   problemSection.querySelectorAll('.problem-card').forEach((card, index) => {
     card.classList.add(index % 2 === 0 ? 'reveal-left' : 'reveal-right');
     card.style.setProperty('--reveal-delay', `${index * 120}ms`);
@@ -163,7 +151,6 @@ const servicesSection = document.querySelector('.services-section');
 if (servicesSection) {
   const heading = servicesSection.querySelector('.section-heading');
   if (heading) heading.classList.add('reveal-up');
-
   servicesSection.querySelectorAll('.service-card').forEach((card, index) => {
     card.classList.add(index % 2 === 0 ? 'reveal-left' : 'reveal-right');
     card.style.setProperty('--reveal-delay', `${index * 120}ms`);
@@ -171,7 +158,6 @@ if (servicesSection) {
 }
 
 const revealTargets = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
-
 function revealVisibleElements() {
   revealTargets.forEach((element) => {
     const rect = element.getBoundingClientRect();
@@ -179,7 +165,6 @@ function revealVisibleElements() {
     if (visible) element.classList.add('is-visible');
   });
 }
-
 if ('IntersectionObserver' in window && revealTargets.length) {
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry) => {
@@ -188,10 +173,8 @@ if ('IntersectionObserver' in window && revealTargets.length) {
       obs.unobserve(entry.target);
     });
   }, { threshold: 0.01, rootMargin: '0px 0px -5% 0px' });
-
   requestAnimationFrame(() => revealTargets.forEach((element) => observer.observe(element)));
 } else {
   revealTargets.forEach((element) => element.classList.add('is-visible'));
 }
-
 window.addEventListener('load', revealVisibleElements, { once: true });
