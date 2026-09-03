@@ -59,7 +59,7 @@
 .site-footer p { margin: 5px 0 0; color: rgba(255,255,255,.58); font-size: 11px; }
 .site-footer a { color: #f3a153; font-size: 12px; font-weight: 800; }
 
-/* Scroll reveal motion */
+/* Scroll reveal */
 .reveal-up, .reveal-left, .reveal-right { opacity: 0; will-change: transform, opacity; transition: opacity 620ms ease, transform 620ms cubic-bezier(.22,1,.36,1); }
 .reveal-up { transform: translate3d(0, 42px, 0); }
 .reveal-left { transform: translate3d(-48px, 0, 0); transition-delay: var(--reveal-delay, 0ms); }
