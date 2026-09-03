@@ -107,20 +107,158 @@ if (heroTrust) {
   });
 }
 
+/* V1 service visuals: five clear appliance photos with a readable overlay. */
+const serviceVisuals = [
+  {
+    title: 'Sửa máy lạnh',
+    detail: 'Vệ sinh • Sửa chữa • Lắp đặt • Bảo trì',
+    image: 'https://images.pexels.com/photos/5463580/pexels-photo-5463580.jpeg?auto=compress&cs=tinysrgb&w=900'
+  },
+  {
+    title: 'Sửa máy giặt',
+    detail: 'Không vắt • Không xả • Báo lỗi • Hư board',
+    image: 'https://images.pexels.com/photos/34734504/pexels-photo-34734504.jpeg?auto=compress&cs=tinysrgb&w=900'
+  },
+  {
+    title: 'Sửa tủ lạnh',
+    detail: 'Không lạnh • Không đông đá • Chảy nước',
+    image: 'https://images.pexels.com/photos/5591927/pexels-photo-5591927.jpeg?auto=compress&cs=tinysrgb&w=900'
+  },
+  {
+    title: 'Sửa máy nước nóng',
+    detail: 'Không nóng • Rò điện • Không lên nguồn',
+    image: 'https://images.pexels.com/photos/34938439/pexels-photo-34938439.jpeg?auto=compress&cs=tinysrgb&w=900'
+  },
+  {
+    title: 'Sửa lò vi sóng',
+    detail: 'Không nóng • Mất nguồn • Liệt phím',
+    image: 'https://images.pexels.com/photos/35290689/pexels-photo-35290689.jpeg?auto=compress&cs=tinysrgb&w=900'
+  }
+];
+
 const servicesGrid = document.querySelector('.services-grid');
 const serviceCards = servicesGrid ? [...servicesGrid.querySelectorAll('.service-card')] : [];
+serviceCards.forEach((card, index) => {
+  const data = serviceVisuals[index];
+  if (!data) return;
+
+  card.href = '#lien-he';
+  card.style.position = 'relative';
+  card.style.overflow = 'hidden';
+  card.style.minHeight = '240px';
+  card.style.padding = '0';
+  card.style.border = '0';
+  card.style.background = '#172536';
+  card.style.color = '#fff';
+
+  card.innerHTML = `
+    <span class="service-card-photo" aria-hidden="true"></span>
+    <span class="service-card-shade" aria-hidden="true"></span>
+    <span class="service-card-content">
+      <span class="service-card-top"><span class="service-icon modern-icon">${icons[['❄️','🌀','🧊','🔥','🍲'][index]] || ''}</span><span class="arrow">↗</span></span>
+      <span class="service-card-copy"><h3>${data.title}</h3><p>${data.detail}</p></span>
+    </span>`;
+
+  const photo = card.querySelector('.service-card-photo');
+  const shade = card.querySelector('.service-card-shade');
+  const content = card.querySelector('.service-card-content');
+  const icon = card.querySelector('.service-icon');
+  const arrow = card.querySelector('.arrow');
+  const copy = card.querySelector('.service-card-copy');
+  const heading = card.querySelector('h3');
+  const detail = card.querySelector('p');
+
+  Object.assign(photo.style, {
+    position: 'absolute', inset: '0', display: 'block',
+    backgroundImage: `url("${data.image}")`, backgroundSize: 'cover',
+    backgroundPosition: 'center', opacity: '0.78', transform: 'scale(1.01)',
+    transition: 'transform .3s ease, opacity .3s ease'
+  });
+  Object.assign(shade.style, {
+    position: 'absolute', inset: '0', display: 'block',
+    background: 'linear-gradient(180deg, rgba(7,21,37,.12) 25%, rgba(7,21,37,.88) 100%)'
+  });
+  Object.assign(content.style, {
+    position: 'relative', zIndex: '2', display: 'flex', flexDirection: 'column',
+    justifyContent: 'space-between', width: '100%', height: '100%', minHeight: '240px',
+    padding: '22px', boxSizing: 'border-box'
+  });
+  Object.assign(icon.style, { background: 'rgba(255,255,255,.94)', color: '#172536' });
+  Object.assign(arrow.style, { background: 'rgba(255,255,255,.16)', color: '#fff' });
+  Object.assign(copy.style, { display: 'block' });
+  Object.assign(heading.style, { color: '#fff', margin: '12px 0 5px', fontSize: '25px' });
+  Object.assign(detail.style, { color: 'rgba(255,255,255,.82)', margin: '0', fontSize: '13px', lineHeight: '1.45' });
+
+  card.addEventListener('mouseenter', () => {
+    photo.style.transform = 'scale(1.06)';
+    photo.style.opacity = '0.88';
+  });
+  card.addEventListener('mouseleave', () => {
+    photo.style.transform = 'scale(1.01)';
+    photo.style.opacity = '0.78';
+  });
+});
+
 function applyServiceMobileLayout() {
   if (!servicesGrid) return;
   const isMobile = window.matchMedia('(max-width: 699px)').matches;
   servicesGrid.style.gridTemplateColumns = isMobile ? '1fr' : '';
   serviceCards.forEach((card) => {
     card.style.width = isMobile ? '100%' : '';
-    card.style.aspectRatio = isMobile ? 'auto' : '';
-    card.style.height = isMobile ? '190px' : '';
+    card.style.aspectRatio = 'auto';
+    card.style.height = isMobile ? '190px' : '240px';
+    const content = card.querySelector('.service-card-content');
+    if (content) content.style.minHeight = isMobile ? '190px' : '240px';
   });
 }
 applyServiceMobileLayout();
 window.addEventListener('resize', applyServiceMobileLayout);
+
+/* Finish the V1 content so there are no temporary placeholder sections. */
+const priceSection = document.querySelector('.price-section');
+if (priceSection) {
+  priceSection.innerHTML = `
+    <div class="section-heading">
+      <p class="eyebrow-dark">MINH BẠCH CHI PHÍ</p>
+      <h2 id="price-title">Bảng giá <span>tham khảo</span></h2>
+      <p>Chi phí thực tế phụ thuộc tình trạng thiết bị. Kỹ thuật viên kiểm tra và báo giá trước khi thực hiện.</p>
+    </div>
+    <div class="price-preview v1-price-table" role="table" aria-label="Bảng giá tham khảo">
+      <div class="price-row price-head"><strong>Dịch vụ</strong><strong>Nội dung</strong><strong>Giá tham khảo</strong></div>
+      <div class="price-row"><strong>Kiểm tra máy lạnh</strong><span>Kiểm tra tình trạng & nguyên nhân</span><b>Từ XX.000đ</b></div>
+      <div class="price-row"><strong>Vệ sinh máy lạnh</strong><span>Vệ sinh dàn lạnh, kiểm tra hoạt động</span><b>Từ XX.000đ</b></div>
+      <div class="price-row"><strong>Sửa máy giặt</strong><span>Kiểm tra & xử lý lỗi</span><b>Từ XX.000đ</b></div>
+      <div class="price-row"><strong>Sửa tủ lạnh</strong><span>Kiểm tra lạnh, đông đá, chảy nước</span><b>Từ XX.000đ</b></div>
+      <div class="price-row"><strong>Sửa máy nước nóng</strong><span>Kiểm tra điện, gia nhiệt & an toàn</span><b>Từ XX.000đ</b></div>
+    </div>
+    <p class="price-disclaimer"><strong>Lưu ý:</strong> Đây là mức giá mẫu cho DEMO. Giá thực tế sẽ được báo trước khi sửa và có thể thay đổi theo tình trạng, linh kiện và công việc thực tế.</p>`;
+}
+
+const experienceSection = document.querySelector('.experience-section');
+if (experienceSection) {
+  experienceSection.innerHTML = `
+    <div class="section-heading">
+      <p class="eyebrow-dark">KINH NGHIỆM SỬ DỤNG</p>
+      <h2 id="experience-title">Mẹo nhỏ để <span>thiết bị bền hơn</span></h2>
+      <p>Một vài lưu ý đơn giản giúp bạn nhận biết sớm sự cố và chủ động bảo dưỡng thiết bị.</p>
+    </div>
+    <div class="experience-grid v1-experience-grid">
+      <article class="experience-card"><span>01</span><h3>Máy lạnh yếu lạnh</h3><p>Kiểm tra lưới lọc, dàn lạnh và tình trạng chảy nước trước khi tiếp tục sử dụng lâu dài.</p></article>
+      <article class="experience-card"><span>02</span><h3>Máy giặt rung mạnh</h3><p>Kiểm tra vị trí đặt máy, lượng đồ và dấu hiệu bất thường trong lúc vắt.</p></article>
+      <article class="experience-card"><span>03</span><h3>Thiết bị có mùi lạ</h3><p>Nếu có mùi khét, tiếng động bất thường hoặc rò điện, nên ngắt nguồn và liên hệ kỹ thuật viên.</p></article>
+    </div>`;
+}
+
+const footer = document.querySelector('.site-footer');
+if (footer) {
+  footer.innerHTML = `
+    <div class="footer-main">
+      <div class="footer-brand"><strong>ĐIỆN LẠNH NGUYỄN CƯỜNG</strong><p>Sửa chữa điện lạnh tại nhà · TP.HCM</p></div>
+      <div class="footer-links"><a href="#home">Trang chủ</a><a href="#dich-vu">Dịch vụ</a><a href="#bang-gia">Bảng giá</a><a href="#kinh-nghiem">Kinh nghiệm</a><a href="#lien-he">Liên hệ</a></div>
+      <div class="footer-contact"><a href="tel:0900000000">☎ 0900 000 000</a><a href="#lien-he">Zalo · Messenger</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Điện Lạnh Nguyễn Cường</span><span>Thông tin liên hệ sẽ được cập nhật khi có dữ liệu chính thức.</span></div>`;
+}
 
 /* Existing scroll reveal behavior — intentionally preserved. */
 const problemSection = document.querySelector('.problem-section');
