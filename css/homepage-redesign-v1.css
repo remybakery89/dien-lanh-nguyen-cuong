@@ -20,8 +20,12 @@
 .btn-primary:hover { transform: translateY(-2px); }
 .btn-secondary { background: rgba(255,255,255,.055); backdrop-filter: blur(8px); }
 .btn-secondary:hover { background: rgba(255,255,255,.11); }
-.hero-trust { display: grid; grid-template-columns: repeat(3, max-content); gap: 9px; margin-top: 22px; }
-.hero-trust span { padding: 8px 10px; border: 1px solid rgba(255,255,255,.1); border-radius: 999px; background: rgba(255,255,255,.045); color: rgba(255,255,255,.72); font-size: 10px; }
+.hero-trust { display: grid; grid-template-columns: repeat(5, max-content); gap: 9px; margin-top: 22px; }
+.hero-trust span { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 38px; padding: 7px 10px; border: 1px solid rgba(255,255,255,.1); border-radius: 999px; background: rgba(255,255,255,.045); color: rgba(255,255,255,.86); font-size: 10px; }
+.hero-trust b { font-size: 10px; font-weight: 650; white-space: nowrap; }
+.trust-icon { display: grid; place-items: center; flex: 0 0 auto; width: 24px; height: 24px; color: #8fd19a; }
+.trust-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.hero-trust span:hover { border-color: rgba(143,209,154,.28); background: rgba(143,209,154,.07); }
 
 .hero-visual { min-height: 380px; }
 .visual-glow { width: 350px; height: 350px; background: rgba(232,137,45,.13); }
@@ -36,7 +40,6 @@
 .visual-caption strong { font-size: 16px; }
 .service-orbit { width: 58px; height: 58px; border-radius: 18px; border: 1px solid rgba(23,37,54,.08); }
 
-.hero-trust span { position: relative; }
 .section-heading { max-width: 720px; margin-bottom: 38px; }
 .eyebrow-dark { display: inline-flex; padding: 7px 10px; border-radius: 999px; background: rgba(232,137,45,.09); letter-spacing: .11em; }
 .section-heading h2 { font-weight: 850; text-wrap: balance; }
@@ -61,7 +64,6 @@
 .arrow { position: relative; z-index: 2; transition: transform .2s ease; }
 .service-card:hover .arrow { transform: rotate(8deg) scale(1.06); }
 
-/* Service cards: make each one read like a compact equipment tile */
 .service-card { display: flex; flex-direction: column; justify-content: space-between; isolation: isolate; }
 .service-card:before { content: ""; position: absolute; z-index: -1; width: 210px; height: 210px; top: 42px; right: -66px; border-radius: 50%; background: rgba(23,37,54,.045); box-shadow: inset 0 0 0 1px rgba(23,37,54,.035); }
 .service-card-featured:before { background: rgba(255,255,255,.055); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
@@ -86,23 +88,19 @@
 .trust-item:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .trust-item strong { width: 32px; height: 32px; }
 .proof-note { border-radius: 0 12px 12px 0; }
-
 .process-step { position: relative; border-radius: 18px; background: #faf9f6; transition: transform .2s ease, box-shadow .2s ease; }
 .process-step:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .process-step > span { display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(232,137,45,.12); }
-
 .price-section { position: relative; background: radial-gradient(circle at 85% 10%, rgba(232,137,45,.16), transparent 24%), linear-gradient(135deg, #111d2a, #1d3043); }
 .price-preview { border-top-color: rgba(255,255,255,.2); }
 .price-preview div, .price-preview b { padding: 17px 0; }
 .price-preview div { gap: 5px; }
 .price-preview strong { font-size: 15px; }
 .price-preview b { min-width: 68px; padding-left: 12px; padding-right: 12px; border-radius: 999px; color: #fff; background: rgba(232,137,45,.16); text-align: center; }
-
 .experience-section { min-height: 300px; background: linear-gradient(180deg, #fff 0%, #f7f5f1 100%); }
 .experience-section .section-heading > p:last-child { padding: 20px; border: 1px dashed #d9dde0; border-radius: 18px; background: rgba(255,255,255,.7); }
 .site-footer { padding-top: 38px; border-top: 1px solid rgba(255,255,255,.08); }
 
-/* Hero V1.1 — make the first screen feel like a real service landing page. */
 .hero { grid-template-columns: minmax(0, 1.02fr) minmax(320px, .98fr); align-items: center; gap: clamp(30px, 5vw, 72px); padding-left: clamp(22px, 6vw, 80px); padding-right: clamp(22px, 6vw, 80px); }
 .hero-copy { max-width: 720px; }
 .hero h1 { font-size: clamp(48px, 7vw, 82px); line-height: .9; letter-spacing: -.055em; }
@@ -124,7 +122,7 @@
 @keyframes orbitFloatThree { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
 
 @media (min-width: 700px) {
-  .hero-trust { grid-template-columns: repeat(3, max-content); }
+  .hero-trust { grid-template-columns: repeat(5, max-content); }
   .problem-card { padding: 22px; }
   .service-card { min-height: 270px; }
 }
@@ -153,9 +151,10 @@
   .hero-lead { font-size: 14px; line-height: 1.5; }
   .hero-actions { display: grid; grid-template-columns: 1fr; gap: 9px; margin-top: 22px; }
   .hero-actions .btn { width: 100%; min-height: 52px; }
-  .hero-trust { grid-template-columns: 1fr 1fr; gap: 7px; }
-  .hero-trust span { padding: 8px 7px; text-align: center; font-size: 9px; }
-  .hero-trust span:last-child { grid-column: 1 / -1; }
+  .hero-trust { grid-template-columns: 1fr; gap: 7px; width: 100%; }
+  .hero-trust span { justify-content: flex-start; width: 100%; min-height: 40px; padding: 8px 11px; border-radius: 12px; text-align: left; }
+  .hero-trust span:last-child { grid-column: auto; }
+  .hero-trust b { font-size: 10px; }
   .hero-visual { min-height: 305px; margin-top: 2px; }
   .visual-glow { width: 270px; height: 270px; }
   .technician-card { width: min(100%, 330px); transform: none; border-radius: 24px; }
@@ -173,9 +172,10 @@
   .orbit-two { right: 1%; top: 23%; }
   .orbit-three { left: 3%; bottom: 3%; }
   .problem-section, .services-section { padding-top: 64px; }
+  .problem-grid, .services-grid, .trust-grid, .process-grid { grid-template-columns: 1fr; gap: 12px; }
   .problem-card:after { width: 30px; height: 30px; right: 14px; top: 14px; }
-  .service-card { min-height: 205px; padding: 16px; }
-  .service-card h3 { font-size: 17px; }
+  .service-card { width: 100%; min-height: 0; aspect-ratio: auto; height: 190px; padding: 17px; }
+  .service-card h3 { font-size: 18px; }
   .service-icon { width: 54px; height: 54px; border-radius: 17px; font-size: 25px; }
   .service-card .arrow { width: 34px; height: 34px; font-size: 16px; }
   .service-card:before { width: 160px; height: 160px; top: 54px; right: -55px; }
