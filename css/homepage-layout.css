@@ -58,6 +58,14 @@
 .site-footer strong { font-size: 13px; }
 .site-footer p { margin: 5px 0 0; color: rgba(255,255,255,.58); font-size: 11px; }
 .site-footer a { color: #f3a153; font-size: 12px; font-weight: 800; }
+
+/* Scroll reveal motion */
+.reveal-up, .reveal-left, .reveal-right { opacity: 0; will-change: transform, opacity; transition: opacity 620ms ease, transform 620ms cubic-bezier(.22,1,.36,1); }
+.reveal-up { transform: translate3d(0, 42px, 0); }
+.reveal-left { transform: translate3d(-48px, 0, 0); transition-delay: var(--reveal-delay, 0ms); }
+.reveal-right { transform: translate3d(48px, 0, 0); transition-delay: var(--reveal-delay, 0ms); }
+.reveal-up.is-visible, .reveal-left.is-visible, .reveal-right.is-visible { opacity: 1; transform: translate3d(0, 0, 0); }
+
 @media (min-width: 700px) {
   .problem-section, .trust-section, .process-section, .price-section, .experience-section { padding-left: 5vw; padding-right: 5vw; }
   .problem-grid { grid-template-columns: repeat(3,1fr); gap: 14px; }
@@ -115,4 +123,7 @@
   .process-step p { font-size: 10px; }
   .price-preview { grid-template-columns: 1fr auto; }
   .site-footer { padding-bottom: 80px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
 }
