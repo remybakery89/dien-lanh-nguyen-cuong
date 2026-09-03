@@ -248,6 +248,7 @@
   font-weight: 400 !important;
   line-height: 1.35 !important;
   text-align: center !important;
+  white-space: normal !important;
 }
 
 @media (max-width: 899px) {
@@ -280,60 +281,73 @@
   }
 }
 
+/* =========================================================
+   MOBILE HERO — keep the reference composition readable.
+   The background image remains untouched; only text scale and
+   spacing are adapted to the narrow viewport.
+   ========================================================= */
 @media (max-width: 699px) {
   .hero.reference-hero {
+    height: 520px;
     min-height: 520px;
     background-size: auto 520px;
-    background-position: center top;
+    background-position: 38% top;
   }
 
   .hero.reference-hero .hero-copy {
-    width: 65%;
+    width: 61%;
     min-height: 520px;
     padding: 30px 0 24px 16px;
+    box-sizing: border-box;
   }
 
   .hero.reference-hero .hero-copy::before {
     height: 30px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     padding: 0 11px;
     font-size: 9px;
+    white-space: nowrap;
   }
 
   .hero.reference-hero h1 {
-    max-width: 310px;
-    font-size: clamp(35px, 10vw, 48px) !important;
-    letter-spacing: -1.6px !important;
+    max-width: 270px;
+    font-size: 40px !important;
+    line-height: .96 !important;
+    letter-spacing: -1.7px !important;
   }
 
   .hero.reference-hero h1 span {
-    margin-top: 8px !important;
-    letter-spacing: -1.4px !important;
+    max-width: 235px;
+    margin-top: 7px !important;
+    font-size: .82em !important;
+    line-height: .98 !important;
+    letter-spacing: -1.2px !important;
   }
 
   .hero.reference-hero .hero-subtitle {
-    max-width: 300px;
-    margin-top: 17px !important;
-    font-size: 12px !important;
-    line-height: 1.45 !important;
+    max-width: 235px;
+    margin-top: 15px !important;
+    font-size: 11px !important;
+    line-height: 1.4 !important;
   }
 
   .hero.reference-hero .hero-actions {
     gap: 7px;
-    margin-top: 20px !important;
+    margin-top: 18px !important;
   }
 
   .hero.reference-hero .hero-actions .btn {
     min-width: 0;
-    height: 46px;
-    padding: 0 10px !important;
-    font-size: 11px !important;
+    height: 42px;
+    padding: 0 9px !important;
+    font-size: 10px !important;
+    white-space: nowrap;
   }
 
   .hero.reference-hero .zalo-mark {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
+    width: 19px;
+    height: 19px;
+    margin-right: 4px;
     font-size: 7px;
   }
 
