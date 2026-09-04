@@ -1,168 +1,22 @@
 (() => {
   const section = document.querySelector('.experience-section');
   if (!section) return;
-
   const articles = [
-    {
-      number: '01',
-      tag: 'MÁY LẠNH',
-      title: 'Máy lạnh không lạnh: những nguyên nhân thường gặp',
-      intro: 'Máy vẫn chạy nhưng phòng lâu mát hoặc gió ra yếu? Hãy kiểm tra theo dấu hiệu trước khi nghĩ đến việc thay linh kiện.',
-      points: [
-        'Lưới lọc và dàn lạnh bám bụi làm luồng gió giảm.',
-        'Dàn nóng, quạt hoặc luồng thoát nhiệt hoạt động không ổn định.',
-        'Cảm biến, bo mạch hoặc hệ thống lạnh có thể phát sinh lỗi.'
-      ],
-      note: 'Nếu máy chạy liên tục nhưng không đạt độ lạnh, nên kiểm tra nguyên nhân thực tế thay vì tự nạp gas hoặc thay linh kiện theo phỏng đoán.',
-      link: '#chi-tiet-may-lanh',
-      linkText: 'Xem nhóm lỗi máy lạnh'
-    },
-    {
-      number: '02',
-      tag: 'MÁY LẠNH',
-      title: 'Máy lạnh chảy nước trong nhà: nên kiểm tra gì?',
-      intro: 'Nước nhỏ xuống tường hoặc sàn không phải lúc nào cũng chỉ do một nguyên nhân. Có thể bắt đầu từ đường thoát nước và tình trạng dàn lạnh.',
-      points: [
-        'Kiểm tra lưới lọc, dàn lạnh và tình trạng bám bụi.',
-        'Kiểm tra đường ống thoát nước có bị nghẹt hoặc đặt sai độ dốc.',
-        'Quan sát tình trạng đóng tuyết, luồng gió và khả năng làm lạnh.'
-      ],
-      note: 'Nếu nước chảy nhiều hoặc xuất hiện kèm hiện tượng đóng tuyết, nên dừng việc tự xử lý khi chưa xác định được nguyên nhân.',
-      link: '#chi-tiet-may-lanh',
-      linkText: 'Xem nhóm lỗi máy lạnh'
-    },
-    {
-      number: '03',
-      tag: 'MÁY GIẶT',
-      title: 'Máy giặt không vắt: kiểm tra từ đâu?',
-      intro: 'Máy giặt cấp nước và giặt bình thường nhưng không vắt thường liên quan đến bước xả, khóa cửa, cảm biến hoặc hệ truyền động.',
-      points: [
-        'Kiểm tra đường xả và tình trạng nước còn trong lồng giặt.',
-        'Kiểm tra cửa máy đã đóng và khóa cửa hoạt động bình thường.',
-        'Nếu máy rung mạnh, kêu lớn hoặc báo lỗi lặp lại, cần kiểm tra sâu hơn.'
-      ],
-      note: 'Không nên cố chạy nhiều lần khi máy rung bất thường hoặc phát tiếng động lớn vì có thể làm tình trạng lỗi nặng thêm.',
-      link: '#chi-tiet-may-giat',
-      linkText: 'Xem nhóm lỗi máy giặt'
-    },
-    {
-      number: '04',
-      tag: 'TỦ LẠNH',
-      title: 'Tủ lạnh không đông đá: 5 điều nên để ý',
-      intro: 'Ngăn đá yếu hoặc không đông có thể xuất hiện cùng nhiều dấu hiệu khác nhau. Việc kiểm tra cần dựa trên tình trạng thực tế của tủ.',
-      points: [
-        'Cửa tủ và gioăng cao su có kín hay không.',
-        'Luồng gió lạnh, quạt và tình trạng bám tuyết trong tủ.',
-        'Tủ có chạy liên tục, phát tiếng động lạ hoặc chảy nước hay không.'
-      ],
-      note: 'Không nên tự tháo phần hệ thống lạnh hoặc can thiệp vào block khi chưa có dụng cụ và kỹ thuật phù hợp.',
-      link: '#chi-tiet-tu-lanh',
-      linkText: 'Xem nhóm lỗi tủ lạnh'
-    },
-    {
-      number: '05',
-      tag: 'MÁY NƯỚC NÓNG',
-      title: 'Máy nước nóng nhảy CB: khi nào nên dừng sử dụng?',
-      intro: 'Nhảy CB, rò điện hoặc có dấu hiệu bất thường liên quan đến điện là tình trạng cần ưu tiên an toàn trước khi nghĩ đến việc sửa nhanh.',
-      points: [
-        'Dừng sử dụng nếu có dấu hiệu rò điện, mùi khét hoặc CB nhảy liên tục.',
-        'Không tự mở máy khi chưa ngắt và xác nhận an toàn nguồn điện.',
-        'Cần kiểm tra hệ thống bảo vệ, gia nhiệt và các kết nối điện.'
-      ],
-      note: 'Với dấu hiệu liên quan đến an toàn điện, ưu tiên ngắt nguồn và gọi người có chuyên môn kiểm tra tại chỗ.',
-      link: '#chi-tiet-may-nuoc-nong',
-      linkText: 'Xem nhóm lỗi máy nước nóng'
-    },
-    {
-      number: '06',
-      tag: 'LÒ VI SÓNG',
-      title: 'Lò vi sóng chạy nhưng không nóng: đừng tự mở máy',
-      intro: 'Lò vẫn quay và hoạt động nhưng thức ăn không nóng có thể liên quan đến nhóm linh kiện điều khiển hoặc gia nhiệt.',
-      points: [
-        'Kiểm tra nguồn điện và tình trạng hoạt động bên ngoài của lò.',
-        'Quan sát lò có báo lỗi, mất nguồn chập chờn hoặc hoạt động bất thường.',
-        'Không tự tháo vỏ lò để kiểm tra phần điện bên trong.'
-      ],
-      note: 'Bên trong lò vi sóng có phần điện áp cao; khi không có chuyên môn, nên để kỹ thuật viên kiểm tra thay vì tự sửa tại nhà.',
-      link: '#chi-tiet-lo-vi-song',
-      linkText: 'Xem nhóm lỗi lò vi sóng'
-    }
+    {number:'01',tag:'MÁY LẠNH',title:'Máy lạnh không lạnh: những nguyên nhân thường gặp',intro:'Máy vẫn chạy nhưng phòng lâu mát hoặc gió ra yếu? Hãy kiểm tra theo dấu hiệu trước khi nghĩ đến việc thay linh kiện.',points:['Lưới lọc và dàn lạnh bám bụi làm luồng gió giảm.','Dàn nóng, quạt hoặc luồng thoát nhiệt hoạt động không ổn định.','Cảm biến, bo mạch hoặc hệ thống lạnh có thể phát sinh lỗi.'],note:'Nếu máy chạy liên tục nhưng không đạt độ lạnh, nên kiểm tra nguyên nhân thực tế thay vì tự nạp gas hoặc thay linh kiện theo phỏng đoán.',link:'#chi-tiet-may-lanh',linkText:'Tới chi tiết máy lạnh'},
+    {number:'02',tag:'MÁY LẠNH',title:'Máy lạnh chảy nước trong nhà: nên kiểm tra gì?',intro:'Nước nhỏ xuống tường hoặc sàn không phải lúc nào cũng chỉ do một nguyên nhân. Có thể bắt đầu từ đường thoát nước và tình trạng dàn lạnh.',points:['Kiểm tra lưới lọc, dàn lạnh và tình trạng bám bụi.','Kiểm tra đường ống thoát nước có bị nghẹt hoặc đặt sai độ dốc.','Quan sát tình trạng đóng tuyết, luồng gió và khả năng làm lạnh.'],note:'Nếu nước chảy nhiều hoặc xuất hiện kèm hiện tượng đóng tuyết, nên dừng việc tự xử lý khi chưa xác định được nguyên nhân.',link:'#chi-tiet-may-lanh',linkText:'Tới chi tiết máy lạnh'},
+    {number:'03',tag:'MÁY GIẶT',title:'Máy giặt không vắt: kiểm tra từ đâu?',intro:'Máy giặt cấp nước và giặt bình thường nhưng không vắt thường liên quan đến bước xả, khóa cửa, cảm biến hoặc hệ truyền động.',points:['Kiểm tra đường xả và tình trạng nước còn trong lồng giặt.','Kiểm tra cửa máy đã đóng và khóa cửa hoạt động bình thường.','Nếu máy rung mạnh, kêu lớn hoặc báo lỗi lặp lại, cần kiểm tra sâu hơn.'],note:'Không nên cố chạy nhiều lần khi máy rung bất thường hoặc phát tiếng động lớn vì có thể làm tình trạng lỗi nặng thêm.',link:'#chi-tiet-may-giat',linkText:'Tới chi tiết máy giặt'},
+    {number:'04',tag:'TỦ LẠNH',title:'Tủ lạnh không đông đá: những điều nên để ý',intro:'Ngăn đá yếu hoặc không đông có thể xuất hiện cùng nhiều dấu hiệu khác nhau. Việc kiểm tra cần dựa trên tình trạng thực tế của tủ.',points:['Cửa tủ và gioăng cao su có kín hay không.','Luồng gió lạnh, quạt và tình trạng bám tuyết trong tủ.','Tủ có chạy liên tục, phát tiếng động lạ hoặc chảy nước hay không.'],note:'Không nên tự tháo phần hệ thống lạnh hoặc can thiệp vào block khi chưa có dụng cụ và kỹ thuật phù hợp.',link:'#chi-tiet-tu-lanh',linkText:'Tới chi tiết tủ lạnh'},
+    {number:'05',tag:'MÁY NƯỚC NÓNG',title:'Máy nước nóng nhảy CB: khi nào nên dừng sử dụng?',intro:'Nhảy CB, rò điện hoặc có dấu hiệu bất thường liên quan đến điện là tình trạng cần ưu tiên an toàn trước khi nghĩ đến việc sửa nhanh.',points:['Dừng sử dụng nếu có dấu hiệu rò điện, mùi khét hoặc CB nhảy liên tục.','Không tự mở máy khi chưa ngắt và xác nhận an toàn nguồn điện.','Cần kiểm tra hệ thống bảo vệ, gia nhiệt và các kết nối điện.'],note:'Với dấu hiệu liên quan đến an toàn điện, ưu tiên ngắt nguồn và gọi người có chuyên môn kiểm tra tại chỗ.',link:'#chi-tiet-may-nuoc-nong',linkText:'Tới chi tiết máy nước nóng'},
+    {number:'06',tag:'LÒ VI SÓNG',title:'Lò vi sóng chạy nhưng không nóng: đừng tự mở máy',intro:'Lò vẫn quay và hoạt động nhưng thức ăn không nóng có thể liên quan đến nhóm linh kiện điều khiển hoặc gia nhiệt.',points:['Kiểm tra nguồn điện và tình trạng hoạt động bên ngoài của lò.','Quan sát lò có báo lỗi, mất nguồn chập chờn hoặc hoạt động bất thường.','Không tự tháo vỏ lò để kiểm tra phần điện bên trong.'],note:'Bên trong lò vi sóng có phần điện áp cao; khi không có chuyên môn, nên để kỹ thuật viên kiểm tra thay vì tự sửa tại nhà.',link:'#chi-tiet-lo-vi-song',linkText:'Tới chi tiết lò vi sóng'}
   ];
-
-  section.innerHTML = `
-    <div class="section-heading experience-heading-v2">
-      <p class="eyebrow-dark">KINH NGHIỆM SỬ DỤNG</p>
-      <h2 id="experience-title">Biết đúng cách, <span>đỡ tốn tiền</span></h2>
-      <p>Kiến thức thực tế về máy lạnh, máy giặt, tủ lạnh, máy nước nóng và lò vi sóng giúp bạn nhận biết dấu hiệu sớm, sử dụng an toàn và biết khi nào nên gọi thợ.</p>
-    </div>
-    <div class="experience-grid experience-grid-v2">
-      ${articles.map(article => `
-        <article class="experience-card experience-card-v2 reveal">
-          <div class="experience-card-meta"><span>${article.number}</span><b>${article.tag}</b></div>
-          <h3>${article.title}</h3>
-          <p class="experience-intro">${article.intro}</p>
-          <details>
-            <summary><span>Đọc hướng dẫn</span><b aria-hidden="true">+</b></summary>
-            <div class="experience-detail-content">
-              <ul>${article.points.map(point => `<li>${point}</li>`).join('')}</ul>
-              <p class="experience-note"><strong>Lưu ý:</strong> ${article.note}</p>
-              <a class="experience-link-btn" href="${article.link}">${article.linkText} <span aria-hidden="true">↗</span></a>
-            </div>
-          </details>
-        </article>
-      `).join('')}
-    </div>
-  `;
-
+  section.innerHTML = `<div class="section-heading experience-heading-v2"><p class="eyebrow-dark">KINH NGHIỆM SỬ DỤNG</p><h2 id="experience-title">Biết đúng cách, <span>đỡ tốn tiền</span></h2><p>Kiến thức thực tế về máy lạnh, máy giặt, tủ lạnh, máy nước nóng và lò vi sóng giúp bạn nhận biết dấu hiệu sớm, sử dụng an toàn và biết khi nào nên gọi thợ.</p></div><div class="experience-grid experience-grid-v2">${articles.map(article=>`<article class="experience-card experience-card-v2 reveal"><div class="experience-card-meta"><span>${article.number}</span><b>${article.tag}</b></div><h3>${article.title}</h3><p class="experience-intro">${article.intro}</p><details><summary><span>Đọc hướng dẫn</span><b aria-hidden="true">+</b></summary><div class="experience-detail-content"><ul>${article.points.map(point=>`<li>${point}</li>`).join('')}</ul><p class="experience-note"><strong>Lưu ý:</strong> ${article.note}</p><a class="experience-link-btn" href="${article.link}">${article.linkText} <span aria-hidden="true">↗</span></a></div></details></article>`).join('')}</div>`;
   const style = document.createElement('style');
   style.id = 'experience-seo-v2';
-  style.textContent = `
-    .experience-heading-v2 { max-width:720px; }
-    .experience-grid-v2 { width:min(1050px,100%); margin:38px auto 0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
-    .experience-card-v2 { min-width:0; background:#fff; border:1px solid #e5e8eb; border-radius:20px; padding:22px; box-shadow:0 10px 28px rgba(23,37,54,.06); box-sizing:border-box; }
-    .experience-card-meta { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px; }
-    .experience-card-meta > span { display:grid; place-items:center; width:34px; height:34px; border-radius:10px; background:#172536; color:#fff; font-size:10px; font-weight:800; }
-    .experience-card-meta > b { color:#e27f25; font-size:9px; font-weight:850; letter-spacing:.1em; text-align:right; }
-    .experience-card-v2 h3 { margin:0 0 10px; color:#172536; font-size:20px; line-height:1.2; letter-spacing:-.025em; }
-    .experience-intro { margin:0; color:#66717d; font-size:13px; line-height:1.6; }
-    .experience-card-v2 details { margin-top:18px; padding-top:16px; border-top:1px solid #edf0f2; }
-    .experience-card-v2 summary { display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; min-height:42px; padding:0 13px; border:1px solid #d9dde1; border-radius:11px; background:#fff; color:#172536; font-size:11px; font-weight:800; cursor:pointer; list-style:none; box-sizing:border-box; }
-    .experience-card-v2 summary::-webkit-details-marker { display:none; }
-    .experience-card-v2 summary > b { display:grid; place-items:center; width:22px; height:22px; border-radius:7px; background:#f7f5f1; color:#e27f25; font-size:16px; line-height:1; transition:transform .2s ease; }
-    .experience-card-v2 details[open] summary > b { transform:rotate(45deg); }
-    .experience-detail-content { padding-top:15px; }
-    .experience-detail-content ul { display:grid; gap:8px; margin:0; padding:0; list-style:none; }
-    .experience-detail-content li { position:relative; padding-left:14px; color:#66717d; font-size:12px; line-height:1.55; }
-    .experience-detail-content li::before { content:''; position:absolute; left:0; top:.58em; width:5px; height:5px; border-radius:50%; background:#e8892d; }
-    .experience-note { margin:15px 0 0; padding:12px 13px; border-left:3px solid #e8892d; background:#f7f5f1; color:#66717d; font-size:11px; line-height:1.55; }
-    .experience-note strong { color:#172536; }
-    .experience-link-btn { display:inline-flex; align-items:center; gap:7px; margin-top:14px; min-height:38px; padding:0 13px; border-radius:10px; background:#172536; color:#fff; font-size:10px; font-weight:800; text-decoration:none; }
-    .experience-link-btn span { color:#e8892d; font-size:14px; }
-    @media (max-width:899px) { .experience-grid-v2 { grid-template-columns:repeat(2,minmax(0,1fr)); } }
-    @media (max-width:699px) {
-      .experience-grid-v2 { grid-template-columns:1fr; margin-top:28px; gap:14px; }
-      .experience-card-v2 { border-radius:17px; padding:18px; }
-      .experience-card-meta { margin-bottom:15px; }
-      .experience-card-v2 h3 { font-size:18px; }
-      .experience-intro { font-size:12px; }
-      .experience-card-v2 details { margin-top:15px; padding-top:14px; }
-    }
-  `;
+  style.textContent = `.experience-heading-v2{max-width:720px}.experience-grid-v2{width:min(1050px,100%);margin:38px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.experience-card-v2{min-width:0;background:#fff;border:1px solid #e5e8eb;border-radius:20px;padding:22px;box-shadow:0 10px 28px rgba(23,37,54,.06);box-sizing:border-box}.experience-card-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.experience-card-meta>span{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#172536;color:#fff;font-size:10px;font-weight:800}.experience-card-meta>b{color:#e27f25;font-size:9px;font-weight:850;letter-spacing:.1em;text-align:right}.experience-card-v2 h3{margin:0 0 10px;color:#172536;font-size:20px;line-height:1.2;letter-spacing:-.025em}.experience-intro{margin:0;color:#66717d;font-size:13px;line-height:1.6}.experience-card-v2 details{margin-top:18px;padding-top:16px;border-top:1px solid #edf0f2}.experience-card-v2 summary{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:42px;padding:0 13px;border:1px solid #d9dde1;border-radius:11px;background:#fff;color:#172536;font-size:11px;font-weight:800;cursor:pointer;list-style:none;box-sizing:border-box}.experience-card-v2 summary::-webkit-details-marker{display:none}.experience-card-v2 summary>b{display:grid;place-items:center;width:22px;height:22px;border-radius:7px;background:#f7f5f1;color:#e27f25;font-size:16px;line-height:1;transition:transform .2s ease}.experience-card-v2 details[open] summary>b{transform:rotate(45deg)}.experience-detail-content{padding-top:15px}.experience-detail-content ul{display:grid;gap:8px;margin:0;padding:0;list-style:none}.experience-detail-content li{position:relative;padding-left:14px;color:#66717d;font-size:12px;line-height:1.55}.experience-detail-content li::before{content:'';position:absolute;left:0;top:.58em;width:5px;height:5px;border-radius:50%;background:#e8892d}.experience-note{margin:15px 0 0;padding:12px 13px;border-left:3px solid #e8892d;background:#f7f5f1;color:#66717d;font-size:11px;line-height:1.55}.experience-note strong{color:#172536}.experience-link-btn{display:inline-flex;align-items:center;gap:7px;margin-top:14px;min-height:38px;padding:0 13px;border-radius:10px;background:#172536;color:#fff;font-size:10px;font-weight:800;text-decoration:none}.experience-link-btn span{color:#e8892d;font-size:14px}@media(max-width:899px){.experience-grid-v2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:699px){.experience-grid-v2{grid-template-columns:1fr;margin-top:28px;gap:14px}.experience-card-v2{border-radius:17px;padding:18px}.experience-card-meta{margin-bottom:15px}.experience-card-v2 h3{font-size:18px}.experience-intro{font-size:12px}.experience-card-v2 details{margin-top:15px;padding-top:14px}}`;
   document.head.appendChild(style);
-
-  section.querySelectorAll('.section-heading,.experience-card-v2').forEach(element => element.classList.add('reveal'));
-  const revealExperience = () => {
-    section.querySelectorAll('.reveal').forEach(element => {
-      const rect = element.getBoundingClientRect();
-      if (rect.top < window.innerHeight * .96 && rect.bottom > 0) element.classList.add('visible');
-    });
-  };
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    }), { threshold:.01, rootMargin:'0px 0px -5% 0px' });
-    section.querySelectorAll('.reveal').forEach(element => observer.observe(element));
-  }
+  section.querySelectorAll('.section-heading,.experience-card-v2').forEach(element=>element.classList.add('reveal'));
+  const revealExperience=()=>{section.querySelectorAll('.reveal').forEach(element=>{const rect=element.getBoundingClientRect();if(rect.top<window.innerHeight*.96&&rect.bottom>0)element.classList.add('visible')})};
+  if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')}),{threshold:.01,rootMargin:'0px 0px -5% 0px'});section.querySelectorAll('.reveal').forEach(element=>observer.observe(element))}
   revealExperience();
-  window.addEventListener('scroll', revealExperience, { passive:true });
+  window.addEventListener('scroll',revealExperience,{passive:true});
 })();
