@@ -198,8 +198,9 @@
   .hero.reference-hero h1 { max-width: 270px; font-size: 40px !important; line-height: .96 !important; letter-spacing: -1.7px !important; }
   .hero.reference-hero h1 span { max-width: 235px; margin-top: 7px !important; font-size: .82em !important; line-height: .98 !important; letter-spacing: -1.2px !important; }
   .hero.reference-hero .hero-subtitle { max-width: 235px; margin-top: 15px !important; font-size: 11px !important; line-height: 1.4 !important; }
-  .hero.reference-hero .hero-actions { gap: 7px; margin-top: 18px !important; }
-  .hero.reference-hero .hero-actions .btn { min-width: 0; height: 42px; padding: 0 9px !important; font-size: 10px !important; white-space: nowrap; }
+  .hero.reference-hero .hero-actions { flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 18px !important; }
+  .hero.reference-hero .hero-actions .btn { min-width: 0; height: 42px; padding: 0 14px !important; font-size: 10px !important; white-space: nowrap; }
+  .hero.reference-hero .hero-actions .btn-secondary { align-self: flex-start; }
   .hero.reference-hero .zalo-mark { width: 19px; height: 19px; margin-right: 4px; font-size: 7px; }
   .hero-trust.reference-trust { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; padding: 23px 4px 21px !important; }
   .hero-trust.reference-trust > span { min-height: 82px; padding: 0 2px !important; }
@@ -321,13 +322,8 @@
     padding: 14px 15px;
   }
   .v1-price-table .price-head { display: none; }
-  .v1-price-table .price-row span { grid-column: 1 / -1; font-size: 11px; color: rgba(255,255,255,.58); }
-  .v1-price-table .price-row b { grid-column: 2; grid-row: 1; }
-  .v1-experience-grid { grid-template-columns: 1fr; gap: 10px; }
-  .v1-experience-grid .experience-card { padding: 18px; }
-  .v1-experience-grid h3 { font-size: 17px; }
-  .v1-experience-grid p { font-size: 12px; }
-  .site-footer .footer-main { grid-template-columns: 1fr 1fr; gap: 24px 16px; }
-  .site-footer .footer-brand { grid-column: 1 / -1; }
-  .site-footer .footer-bottom { flex-direction: column; gap: 5px; }
+  .v1-price-table .price-row span { grid-column: 1 / -1; font-size: 12px; }
+  .v1-experience-grid { grid-template-columns: 1fr; }
+  .site-footer .footer-main { grid-template-columns: 1fr; gap: 22px; }
+  .site-footer .footer-bottom { flex-direction: column; gap: 8px; }
 }
