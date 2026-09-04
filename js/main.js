@@ -144,6 +144,11 @@
       if('IntersectionObserver' in window){ const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add('visible');}),{threshold:.01,rootMargin:'0px 0px -5% 0px'}); priceSection.querySelectorAll('.reveal').forEach(element=>observer.observe(element)); }
       revealPrice(); window.addEventListener('scroll',revealPrice,{passive:true});
     }
+
+    const experienceLoader = document.createElement('script');
+    experienceLoader.src = 'js/experience-seo.js?v=1';
+    experienceLoader.onerror = () => console.error('Không tải được experience-seo.js');
+    document.head.appendChild(experienceLoader);
   };
   original.onerror=()=>console.error('Không tải được main-original.js');
   document.head.appendChild(original);
